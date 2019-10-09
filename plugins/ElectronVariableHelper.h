@@ -200,7 +200,7 @@ void ElectronVariableHelper<T>::produce(edm::Event & iEvent, const edm::EventSet
     float convVtxFitProb = -1.;
     //if(!convRef.isNull()) {
     //const reco::Vertex &vtx = convRef.get()->conversionVertex();
-    if(conv){ // change above two lines for this when moving to 106X or later
+    if(conv){
       const reco::Vertex &vtx = conv->conversionVertex();   
         if (vtx.isValid()) {
             convVtxFitProb = TMath::Prob( vtx.chi2(),  vtx.ndof());

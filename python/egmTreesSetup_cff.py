@@ -205,6 +205,8 @@ def setSequences(process, options):
         )
     if not options['useAOD'] : process.ele_sequence += process.probeEleHLTsafe
 
+    #print ("next is process.pho_sequence ")
+
     process.pho_sequence = cms.Sequence(
         process.goodPhotons               +
         process.egmPhotonIDSequence       +
@@ -223,8 +225,8 @@ def setSequences(process, options):
         process.probePhoCutBasedLoose100XV2  +
         process.probePhoCutBasedMedium100XV2 +
         process.probePhoCutBasedTight100XV2  +
-        process.probePhoMVA94Xwp90       +
-        process.probePhoMVA94Xwp80       +
+        #process.probePhoMVA94Xwp90       +
+        #process.probePhoMVA94Xwp80       +
         process.probePhoMVA94XV2wp90       +
         process.probePhoMVA94XV2wp80       +
         process.probePho                

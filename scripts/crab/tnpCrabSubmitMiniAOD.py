@@ -71,8 +71,7 @@ if __name__ == '__main__':
 
 #    config.Data.splitting     = 'FileBased'
 #    config.Data.unitsPerJob   = 10
-#    config.Data.inputDataset    = '/DYJetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISpring18MiniAOD-100X_upgrade2018_realistic_v10-v2/MINIAODSIM'
-
+    config.Data.inputDataset    = '/DYJetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISpring18MiniAOD-100X_upgrade2018_realistic_v10-v2/MINIAODSIM'
     config.Data.outLFNDirBase = '%s/%s/' % (mainOutputDir,'mc')
     config.JobType.pyCfgParams  = ['isMC=True',doEleTree,doPhoTree,'GT=100X_upgrade2018_realistic_v10']
     config.Data.userInputFiles = lfnList

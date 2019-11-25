@@ -9,24 +9,29 @@ from PhysicsTools.SelectorUtils.tools.vid_id_tools import *
 def setIDs(process, options):
 
     dataFormat = DataFormat.MiniAOD
+    #print ("I am in egmPhotonIDModules cff, inside setIDs")
     phoProducer = "PatPhotonSelectorByValueMap"
     if (options['useAOD']):
         dataFormat = DataFormat.AOD
         phoProducer = "PhotonSelectorByValueMap"
 
+    #print ("will switchOnVIDPhotonIdProducer")
     switchOnVIDPhotonIdProducer(process, dataFormat)
         
     # define which IDs we want to produce
     my_id_modules = ['RecoEgamma.PhotonIdentification.Identification.cutBasedPhotonID_Spring16_V2p2_cff'   ,
                      'RecoEgamma.PhotonIdentification.Identification.mvaPhotonID_Spring16_nonTrig_V1_cff',
                      'RecoEgamma.PhotonIdentification.Identification.cutBasedPhotonID_Fall17_94X_V1_cff',
-                     'RecoEgamma.PhotonIdentification.Identification.mvaPhotonID_Fall17_94X_V1_cff',
+                     #'RecoEgamma.PhotonIdentification.Identification.mvaPhotonID_Fall17_94X_V1_cff',
                      'RecoEgamma.PhotonIdentification.Identification.mvaPhotonID_Fall17_94X_V2_cff',
-                     'RecoEgamma.PhotonIdentification.Identification.cutBasedPhotonID_Fall17_100X_V2_cff'
+                     'RecoEgamma.PhotonIdentification.Identification.cutBasedPhotonID_Fall17_94X_V2_cff'
                      ]
                  
     for idmod in my_id_modules:
+        #print ("setupAllVIDIdsInModule")
         setupAllVIDIdsInModule(process, idmod, setupVIDPhotonSelection)
+
+    process.load("RecoEgamma.PhotonIdentification.photonIDValueMapProducer_cff")
 
     process.egmPhotonIDs.physicsObjectSrc        = cms.InputTag(options['PHOTON_COLL'])
     process.photonIDValueMapProducer.srcMiniAOD  = cms.InputTag(options['PHOTON_COLL'])
@@ -63,9 +68,9 @@ def setIDs(process, options):
     process.probePhoCutBasedLoose100XV2  = process.probePhoCutBasedLoose.clone()
     process.probePhoCutBasedMedium100XV2 = process.probePhoCutBasedLoose.clone()
     process.probePhoCutBasedTight100XV2  = process.probePhoCutBasedLoose.clone()
-    process.probePhoCutBasedLoose100XV2.selection  = cms.InputTag("egmPhotonIDs:cutBasedPhotonID-Fall17-100X-V2-loose"  )
-    process.probePhoCutBasedMedium100XV2.selection = cms.InputTag("egmPhotonIDs:cutBasedPhotonID-Fall17-100X-V2-medium" )
-    process.probePhoCutBasedTight100XV2.selection  = cms.InputTag("egmPhotonIDs:cutBasedPhotonID-Fall17-100X-V2-tight"  )
+    process.probePhoCutBasedLoose100XV2.selection  = cms.InputTag("egmPhotonIDs:cutBasedPhotonID-Fall17-94X-V2-loose"  )
+    process.probePhoCutBasedMedium100XV2.selection = cms.InputTag("egmPhotonIDs:cutBasedPhotonID-Fall17-94X-V2-medium" )
+    process.probePhoCutBasedTight100XV2.selection  = cms.InputTag("egmPhotonIDs:cutBasedPhotonID-Fall17-94X-V2-tight"  )
 
     process.probePhoMVA = process.probePhoCutBasedLoose.clone()
     process.probePhoMVA.selection = cms.InputTag("egmPhotonIDs:mvaPhoID-Spring16-nonTrig-V1-wp90")    
@@ -74,10 +79,10 @@ def setIDs(process, options):
     process.probePhoMVA80Xwp90.selection = cms.InputTag("egmPhotonIDs:mvaPhoID-Spring16-nonTrig-V1-wp90")    
     process.probePhoMVA80Xwp80.selection = cms.InputTag("egmPhotonIDs:mvaPhoID-Spring16-nonTrig-V1-wp80")    
 
-    process.probePhoMVA94Xwp90 = process.probePhoCutBasedLoose.clone()
-    process.probePhoMVA94Xwp80 = process.probePhoCutBasedLoose.clone()
-    process.probePhoMVA94Xwp90.selection = cms.InputTag("egmPhotonIDs:mvaPhoID-RunIIFall17-v1-wp90")    
-    process.probePhoMVA94Xwp80.selection = cms.InputTag("egmPhotonIDs:mvaPhoID-RunIIFall17-v1-wp80")    
+#    process.probePhoMVA94Xwp90 = process.probePhoCutBasedLoose.clone()
+#    process.probePhoMVA94Xwp80 = process.probePhoCutBasedLoose.clone()
+#    process.probePhoMVA94Xwp90.selection = cms.InputTag("egmPhotonIDs:mvaPhoID-RunIIFall17-v1-wp90")    
+#    process.probePhoMVA94Xwp80.selection = cms.InputTag("egmPhotonIDs:mvaPhoID-RunIIFall17-v1-wp80")    
 
 
     process.probePhoMVA94XV2wp90 = process.probePhoCutBasedLoose.clone()

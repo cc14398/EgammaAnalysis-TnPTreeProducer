@@ -5,11 +5,24 @@ filesMiniAOD_Preliminary2018 = {
     'mc' :  cms.untracked.vstring(
 #        '/store/mc/RunIISpring18MiniAOD/DYJetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/MINIAODSIM/100X_upgrade2018_realistic_v10-v2/100000/6815ED2D-7530-E811-90C0-FA163E27991E.root',
 #        '/store/mc/RunIISpring18MiniAOD/DYJetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/MINIAODSIM/100X_upgrade2018_realistic_v10-v2/100000/801BEA3C-9C2F-E811-AFA4-02163E015DB8.root',
-        '/store/mc/RunIISpring18MiniAOD/DYJetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/MINIAODSIM/100X_upgrade2018_realistic_v10-v2/100000/6815ED2D-7530-E811-90C0-FA163E27991E.root'
+#        '/store/mc/RunIISpring18MiniAOD/DYJetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/MINIAODSIM/100X_upgrade2018_realistic_v10-v2/100000/6815ED2D-7530-E811-90C0-FA163E27991E.root'
+#        '/store/relval/CMSSW_10_6_1_patch1/RelValZEE_13/MINIAODSIM/PU25ns_106X_mc2017_realistic_v7-v1/20000/411E2CE6-5D35-214C-B8A9-70F17FC38D3B.root'
+#        '/store/relval/CMSSW_10_6_1_patch1/RelValZEE_13/MINIAODSIM/106X_mc2017_realistic_v7-v1/20000/88D68827-EEFE-BA40-88B4-E7F2F5FEA083.root'
+#        '/store/relval/CMSSW_10_6_1/RelValZEE_13/MINIAODSIM/PU25ns_106X_mc2017_realistic_v6_HS-v1/10000/FA941F11-B21C-844C-B6B3-9FDB6D198B0F.root'
+#        '/store/mc/Run3Summer19DRPremix/DYJets_incl_MLL-50_TuneCP5_14TeV-madgraphMLM-pythia8/AODSIM/2023Scenario_106X_mcRun3_2023_realistic_v3-v1/270000/D5352221-212F-4C4A-8CD7-844706702C4D.root'
+#        '/store/mc/Run3Summer19DRPremix/DYJets_incl_MLL-50_TuneCP5_14TeV-madgraphMLM-pythia8/AODSIM/2023Scenario_106X_mcRun3_2023_realistic_v3-v1/270000/F4ACA458-EE17-D74E-8EDD-BC8932970829.root'
+#        '/store/relval/CMSSW_10_6_4_patch1/RelValZEE_13/MINIAODSIM/PU25ns_106X_upgrade2018_realistic_v9_HS-v1/10000/404182DF-1E6B-D643-B39B-FA07C81AD603.root'
+        '/store/relval/CMSSW_10_6_4_patch1/RelValZEE_13/MINIAODSIM/PU25ns_106X_upgrade2018_realistic_v9_HS_resub-v1/10000/F5108D18-CE6C-2543-8F6F-D9173ED9C94C.root'
         ),
 
     'data' : cms.untracked.vstring(
-        '/store/data/Run2018A/EGamma/MINIAOD/PromptReco-v1/000/315/252/00000/40343760-464B-E811-ACC9-02163E00B0CB.root',
+#        '/store/data/Run2018A/EGamma/MINIAOD/PromptReco-v1/000/315/252/00000/40343760-464B-E811-ACC9-02163E00B0CB.root',
+#        '/store/relval/CMSSW_10_6_1_patch1/DoubleEG/MINIAOD/106X_dataRun2_v17_RelVal_2017B-v1/20000/F8F6FCA4-51DB-AB46-A793-C5DDEA7E8CC7.root'
+#        '/store/data/Run2017F/SingleElectron/MINIAOD/29Jun2019_UL2017validation-v1/260000/AE5061E0-C8EC-3D4E-951D-C2B554EE4606.root'
+#        '/store/data/Run2017C/DoubleEG/MINIAOD/09Aug2019_UL2017-v1/50000/FD3FE859-88C3-5F4B-A39C-6841C32BB9C0.root'
+#        '/store/relval/CMSSW_10_6_4_patch1/EGamma/MINIAOD/106X_dataRun2_v24_RelVal_2018D-v1/10000/FB50AF6A-3B3E-A24E-BB4D-7B4F252744BF.root'
+#        '/store/relval/CMSSW_10_6_4_patch1/EGamma/MINIAOD/106X_dataRun2_v24_RelVal_2018C-v1/10000/E097A9F3-85B0-0D4A-89B4-5744794D5BA8.root'
+        '/store/data/Run2018C/EGamma/MINIAOD/ForValUL2018-v2/230000/ECF32957-E451-E148-9DFA-A81011B4F118.root'
         )
 }
 
@@ -24,10 +37,12 @@ filesAOD_Preliminary2018 = {
 
 filesAOD_Preliminary2017 = {
     'mc' :  cms.untracked.vstring(
-        '/store/mc/RunIIFall17DRPremix/DYJetsToLL_M-50_TuneCP5_13TeV-amcatnloFXFX-pythia8/AODSIM/PU2017RECOPF_94X_mc2017_realistic_v11-v1/50000/D42B8057-9F67-E811-9656-549F3525C4EC.root'
+        '/store/mc/RunIISummer19UL17RECO/DYJetsToEE_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/AODSIM/106X_mc2017_realistic_v6-v2/30000/FFCA4B4F-6AFD-D644-8CA6-C9264C6C0C68.root' ## UL17
+#        '/store/mc/RunIIFall17DRPremix/DYJetsToLL_M-50_TuneCP5_13TeV-amcatnloFXFX-pythia8/AODSIM/PU2017RECOPF_94X_mc2017_realistic_v11-v1/50000/D42B8057-9F67-E811-9656-549F3525C4EC.root'
         ),
     'data' :  cms.untracked.vstring(
-        '/store/data/Run2017F/SingleElectron/AOD/17Nov2017-v1/50000/005B2A56-96E0-E711-B727-0CC47A4D7690.root',
+        '/store/data/Run2017B/DoubleEG/AOD/09Aug2019_UL2017-v1/260001/FA19C3F9-711B-1D4C-AF1C-CD772242B55B.root', ## UL17
+#        '/store/data/Run2017F/SingleElectron/AOD/17Nov2017-v1/50000/005B2A56-96E0-E711-B727-0CC47A4D7690.root',
         )
 }
 
@@ -40,7 +55,8 @@ filesMiniAOD_Preliminary2017 = {
         ),
     
     'data' : cms.untracked.vstring( 
-        '/store/data/Run2017B/SingleElectron/MINIAOD/17Nov2017-v1/40000/064D4B85-E9DB-E711-8B34-02163E019D0E.root',
+        '/store/data/Run2017B/DoubleEG/MINIAOD/09Aug2019_UL2017-v1/50000/FC5478A2-1ADF-754E-B34B-3AA5A7119429.root',
+        #'/store/data/Run2017B/SingleElectron/MINIAOD/17Nov2017-v1/40000/064D4B85-E9DB-E711-8B34-02163E019D0E.root',
         #        '/store/data/Run2017C/SingleElectron/MINIAOD/PromptReco-v1/000/299/368/00000/08588A8B-836D-E711-8ACF-02163E01A3AC.root',
         #        '/store/data/Run2017B/SingleElectron/MINIAOD/PromptReco-v1/000/297/050/00000/166F7BB0-3C56-E711-BD8B-02163E0145C5.root',     
         )

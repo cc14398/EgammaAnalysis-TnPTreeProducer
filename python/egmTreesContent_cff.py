@@ -11,6 +11,7 @@ ZVariablesToStore = cms.PSet(
     mass  = cms.string("mass"),
     )   
 
+#print ("next step SCProbeVariablesToStore")
 SCProbeVariablesToStore = cms.PSet(
     sc_eta    = cms.string("eta"),
     sc_phi    = cms.string("phi"),
@@ -20,6 +21,8 @@ SCProbeVariablesToStore = cms.PSet(
     sc_e      = cms.string("energy"),
     sc_tkIso  = cms.InputTag("recoEcalCandidateHelper:scTkIso"),
     )
+
+#print (" ---- SCProbeVariablesToStore worked")
 
 EleProbeVariablesToStore = cms.PSet(
     el_eta    = cms.string("eta"),
@@ -124,6 +127,7 @@ EleProbeVariablesToStore = cms.PSet(
 
     )
 
+#print ("just before PhoProbeVariablesToStore in egmTreesContent")
 PhoProbeVariablesToStore = cms.PSet(
     ph_eta    = cms.string("eta"),
     ph_abseta = cms.string("abs(eta)"),
@@ -137,27 +141,26 @@ PhoProbeVariablesToStore = cms.PSet(
     phsc_abseta = cms.string("abs(-log(tan(superCluster.position.theta/2)))"),
 
 
-#id based
+#id based #changed_by_swagata
     ph_full5x5x_r9   = cms.string("full5x5_r9"),
     ph_r9            = cms.string("r9"),
     ph_sieie         = cms.string("full5x5_sigmaIetaIeta"),
-    ph_sieip         = cms.InputTag("photonIDValueMapProducer:phoFull5x5SigmaIEtaIPhi"),
-    ph_ESsigma       = cms.InputTag("photonIDValueMapProducer:phoESEffSigmaRR"),
+    #ph_sieip         = cms.InputTag("photonIDValueMapProducer:phoFull5x5SigmaIEtaIPhi"),
+    #ph_ESsigma       = cms.InputTag("full5x5_showerShapeVariables.effSigmaRR "),
     ph_hoe           = cms.string("hadronicOverEm"),
 
 #iso
-    ph_chIso    = cms.InputTag("photonIDValueMapProducer:phoChargedIsolation"),
-    ph_neuIso   = cms.InputTag("photonIDValueMapProducer:phoNeutralHadronIsolation"),
-    ph_phoIso   = cms.InputTag("photonIDValueMapProducer:phoPhotonIsolation"),
-    ph_chWorIso = cms.InputTag("photonIDValueMapProducer:phoWorstChargedIsolation"), 
+    ph_chIso    = cms.string("chargedHadronIso"),
+    ph_neuIso   = cms.string("neutralHadronIso"),
+    ph_phoIso   = cms.string("photonIso"),
+    #ph_chWorIso = cms.InputTag("photonIDValueMapProducer:phoWorstChargedIsolationConeVetoPVConstr"), 
 
 #pho mva
-
     ph_mva80X       = cms.InputTag("photonMVAValueMapProducer:PhotonMVAEstimatorRun2Spring16NonTrigV1Values"),
     ph_mva94X       = cms.InputTag("photonMVAValueMapProducer:PhotonMVAEstimatorRunIIFall17v1p1Values"),
 )
 
-
+#print ("Last line was ph_mva80X & ph_mva94X with input tags photonMVAValueMapProducer:PhotonMVAEstimatorRun2Spring16NonTrigV1Values, photonMVAValueMapProducer:PhotonMVAEstimatorRunIIFall17v1p1Values")
 
 
 TagVariablesToStore = cms.PSet(

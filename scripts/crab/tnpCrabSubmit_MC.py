@@ -2,14 +2,14 @@ from CRABClient.UserUtilities import config, getUsernameFromSiteDB
 import sys
 config = config()
 
-submitVersion = "ntuple_DYJetsToEE_2017UL_AOD_v2_HighStat"
+submitVersion = "ntuple_2018_UL_ForVal_v1"
 
 doEleTree = 'doEleID=True'
 doPhoTree = 'doPhoID=True'
 doHLTTree = 'doTrigger=True'
-doRECO    = 'doRECO=True'
+doRECO    = 'doRECO=False'
 
-mainOutputDir = '/store/group/phys_egamma/asroy/Tag-and-Probe_Tree/UL2017_AOD/%s' % submitVersion
+mainOutputDir = '/store/group/phys_egamma/asroy/Tag-and-Probe_Tree/UL2018_ForVal_HighStat/%s' % submitVersion
 
 config.General.transferLogs = False
 
@@ -49,12 +49,11 @@ if __name__ == '__main__':
     config.Data.outLFNDirBase = '%s/%s/' % (mainOutputDir,'mc')
     config.Data.splitting     = 'FileBased'
     config.Data.unitsPerJob   = 20
-    config.JobType.pyCfgParams  = ['isMC=True','isAOD=True',doEleTree,doPhoTree,doHLTTree,doRECO]
+    config.JobType.pyCfgParams  = ['isMC=True','isAOD=False',doEleTree,doPhoTree,doHLTTree,doRECO]
     config.Data.allowNonValidInputDataset = True
 
-    config.General.requestName  = '2017UL_DYJetsToEE_AOD_v2_HighStat'
-    config.Data.inputDataset    = '/DYJetsToEE_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17RECO-106X_mc2017_realistic_v6-v2/AODSIM'
-#    config.Data.inputDataset    = '/RelValZEE_13/CMSSW_10_6_4_patch1-PU25ns_106X_upgrade2018_realistic_v9_HS_resub-v1/MINIAODSIM'
+    config.General.requestName  = 'RelValZEE_106X_v9_2018_UL'
+    config.Data.inputDataset    = '/RelValZEE_13/CMSSW_10_6_4_patch1-PU25ns_106X_upgrade2018_realistic_v9_HS_resub-v1/MINIAODSIM'
     submit(config) 
 
 #    config.General.requestName  = 'RelValZEE_106X_v9_2018_UL'

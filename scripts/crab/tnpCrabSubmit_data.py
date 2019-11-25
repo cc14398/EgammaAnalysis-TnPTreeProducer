@@ -2,14 +2,14 @@ from CRABClient.UserUtilities import config, getUsernameFromSiteDB
 import sys
 config = config()
 
-submitVersion = "ntuple_DoubleEG_2017UL_AOD_v1"
+submitVersion = "ntuple_SingleElectron_2017UL_v1"
 
 doEleTree = 'doEleID=True'
 doPhoTree = 'doPhoID=True'
-doHLTTree = 'doTrigger=True'
-doRECO    = 'doRECO=True'
+doHLTTree = 'doTrigger=False'
+doRECO    = 'doRECO=False'
 
-mainOutputDir = '/store/group/phys_egamma/asroy/Tag-and-Probe_Tree/UL2017_AOD/%s' % submitVersion
+mainOutputDir = '/store/group/phys_egamma/asroy/Tag-and-Probe_Tree/UL2017/%s' % submitVersion
 
 config.General.transferLogs = False
 
@@ -52,7 +52,7 @@ if __name__ == '__main__':
 #    config.Data.lumiMask      = 'https://cms-service-dqm.web.cern.ch/cms-service-dqm/CAF/certification/Collisions18/13TeV/ReReco/Cert_314472-325175_13TeV_17SeptEarlyReReco2018ABC_PromptEraD_Collisions18_JSON.txt'
     config.Data.lumiMask      = 'https://cms-service-dqm.web.cern.ch/cms-service-dqm/CAF/certification/Collisions17/13TeV/ReReco/Cert_294927-306462_13TeV_EOY2017ReReco_Collisions17_JSON_v1.txt'
     config.Data.unitsPerJob   = 90
-    config.JobType.pyCfgParams  = ['isMC=False','isAOD=True',doEleTree,doPhoTree,doHLTTree,doRECO]
+    config.JobType.pyCfgParams  = ['isMC=False','isAOD=False',doEleTree,doPhoTree,doHLTTree,doRECO]
 
 
 
@@ -61,24 +61,26 @@ if __name__ == '__main__':
 #    config.Data.inputDataset    = '/EGamma/Run2018A-ForValUL2018-v2/MINIAOD'
 #    submit(config)
 
-    config.General.requestName  = 'DoubleEG_2017B_UL'
-    config.Data.inputDataset    = '/DoubleEG/Run2017B-09Aug2019_UL2017-v1/AOD'
+#    config.General.requestName  = 'DoubleEG_2017B_UL'
+#    config.Data.inputDataset    = '/DoubleEG/Run2017B-09Aug2019_UL2017-v1/MINIAOD'
+    config.General.requestName  = 'SingleElectron_2017B_UL'
+    config.Data.inputDataset    = '/SingleElectron/Run2017B-09Aug2019_UL2017-v1/MINIAOD'
     submit(config)
 
-    config.General.requestName  = 'DoubleEG_2017C_UL'
-    config.Data.inputDataset    = '/DoubleEG/Run2017C-09Aug2019_UL2017-v1/AOD'
+    config.General.requestName  = 'SingleElectron_2017C_UL'
+    config.Data.inputDataset    = '/SingleElectron/Run2017C-09Aug2019_UL2017-v1/MINIAOD'
     submit(config)
 
-    config.General.requestName  = 'DoubleEG_2017D_UL'
-    config.Data.inputDataset    = '/DoubleEG/Run2017D-09Aug2019_UL2017-v1/AOD'
+    config.General.requestName  = 'SingleElectron_2017D_UL'
+    config.Data.inputDataset    = '/SingleElectron/Run2017D-09Aug2019_UL2017-v1/MINIAOD'
     submit(config)
 
-    config.General.requestName  = 'DoubleEG_2017E_UL'
-    config.Data.inputDataset    = '/DoubleEG/Run2017E-09Aug2019_UL2017-v1/AOD'
+    config.General.requestName  = 'SingleElectron_2017E_UL'
+    config.Data.inputDataset    = '/SingleElectron/Run2017E-09Aug2019_UL2017-v1/MINIAOD'
     submit(config)
 
-    config.General.requestName  = 'DoubleEG_2017F_UL'
-    config.Data.inputDataset    = '/DoubleEG/Run2017F-09Aug2019_UL2017-v1/AOD'
+    config.General.requestName  = 'SingleElectron_2017F_UL'
+    config.Data.inputDataset    = '/SingleElectron/Run2017F-09Aug2019_UL2017-v1/MINIAOD'
     submit(config)
 
 

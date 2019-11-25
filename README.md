@@ -4,7 +4,27 @@ TnP package for EGM
 For regular users
 1. install
 
-git clone -b CMSSW_9_4_X https://github.com/cms-analysis/EgammaAnalysis-TnPTreeProducer.git EgammaAnalysis/TnPTreeProducer
+cmsrel CMSSW_10_6_4_patch1
+
+cd CMSSW_10_6_4_patch1/src
+
+cmsenv
+
+git clone -b UL_106X https://github.com/ashimroy/EgammaAnalysis-TnPTreeProducer EgammaAnalysis/TnPTreeProducer
+
+scram b -j8
+
+2. run interactively
+
+cd EgammaAnalysis/TnPTreeProducer
+cmsRun python/TnPTreeProducer_cfg.py doEleID=True doPhoID=True doTrigger=True doRECO=True isAOD=True isMC=False maxEvents=2000
+
+3. crab submission
+
+look into scripts/crab/ folder
+
+example for crab submission: python scripts/crab/tnpCrabSubmitAOD_data.py
+
 
 
 

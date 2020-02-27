@@ -11,9 +11,11 @@ def setIDs(process, options):
     dataFormat = DataFormat.MiniAOD
     #print ("I am in egmPhotonIDModules cff, inside setIDs")
     phoProducer = "PatPhotonSelectorByValueMap"
+    PatPhotonNm1Selector = "PatPhotonNm1Selector"
     if (options['useAOD']):
         dataFormat = DataFormat.AOD
         phoProducer = "PhotonSelectorByValueMap"
+        PatPhotonNm1Selector = "PatPhotonNm1Selector"
 
     #print ("will switchOnVIDPhotonIdProducer")
     switchOnVIDPhotonIdProducer(process, dataFormat)
@@ -46,6 +48,59 @@ def setIDs(process, options):
                                                     id_cut    = cms.bool(True)
                                                     )
 
+    process.probePhoCutBasedLooseMinPtCut=cms.EDProducer( PatPhotonNm1Selector,
+                                                    input     = cms.InputTag("goodPhotons"),
+                                                    cut       = cms.string(options['PHOTON_CUTS']),
+                                                    selection = cms.InputTag("egmPhotonIDs:cutBasedPhotonID-Spring16-V2p2-loose"),
+                                                    cutNamesToMask = cms.vstring("PhoSCEtaMultiRangeCut_0", "PhoSingleTowerHadOverEmCut_0", "PhoFull5x5SigmaIEtaIEtaCut_0", "PhoGenericRhoPtScaledCut_0","PhoGenericRhoPtScaledCut_1","PhoGenericRhoPtScaledCut_2")
+                                                    )
+
+
+    process.probePhoCutBasedLoosePhoSCEtaMultiRangeCut=cms.EDProducer( PatPhotonNm1Selector,
+                                                    input     = cms.InputTag("goodPhotons"),
+                                                    cut       = cms.string(options['PHOTON_CUTS']),
+                                                    selection = cms.InputTag("egmPhotonIDs:cutBasedPhotonID-Spring16-V2p2-loose"),
+                                                    cutNamesToMask = cms.vstring("MinPtCut_0", "PhoSingleTowerHadOverEmCut_0", "PhoFull5x5SigmaIEtaIEtaCut_0", "PhoGenericRhoPtScaledCut_0", "PhoGenericRhoPtScaledCut_1", "PhoGenericRhoPtScaledCut_2")
+                                                    )
+
+    process.probePhoCutBasedLoosePhoSingleTowerHadOverEmCut=cms.EDProducer( PatPhotonNm1Selector,
+                                                    input     = cms.InputTag("goodPhotons"),
+                                                    cut       = cms.string(options['PHOTON_CUTS']),
+                                                    selection = cms.InputTag("egmPhotonIDs:cutBasedPhotonID-Spring16-V2p2-loose"),
+                                                    cutNamesToMask = cms.vstring("MinPtCut_0", "PhoSCEtaMultiRangeCut_0", "PhoFull5x5SigmaIEtaIEtaCut_0", "PhoGenericRhoPtScaledCut_0", "PhoGenericRhoPtScaledCut_1", "PhoGenericRhoPtScaledCut_2")
+                                                    )
+
+    process.probePhoCutBasedLoosePhoFull5x5SigmaIEtaIEtaCut=cms.EDProducer( PatPhotonNm1Selector,
+                                                    input     = cms.InputTag("goodPhotons"),
+                                                    cut       = cms.string(options['PHOTON_CUTS']),
+                                                    selection = cms.InputTag("egmPhotonIDs:cutBasedPhotonID-Spring16-V2p2-loose"),
+                                                    cutNamesToMask = cms.vstring("MinPtCut_0", "PhoSCEtaMultiRangeCut_0", "PhoSingleTowerHadOverEmCut_0", "PhoGenericRhoPtScaledCut_0", "PhoGenericRhoPtScaledCut_1", "PhoGenericRhoPtScaledCut_2")
+                                                    )
+
+
+    process.probePhoCutBasedLoosePhoGenericRhoPtScaledCut0 =cms.EDProducer( PatPhotonNm1Selector,
+                                                    input     = cms.InputTag("goodPhotons"),
+                                                    cut       = cms.string(options['PHOTON_CUTS']),
+                                                    selection = cms.InputTag("egmPhotonIDs:cutBasedPhotonID-Spring16-V2p2-loose"),
+                                                    cutNamesToMask = cms.vstring("MinPtCut_0", "PhoSCEtaMultiRangeCut_0", "PhoSingleTowerHadOverEmCut_0", "PhoFull5x5SigmaIEtaIEtaCut_0", "PhoGenericRhoPtScaledCut_1", "PhoGenericRhoPtScaledCut_2")
+                                                    )
+
+    process.probePhoCutBasedLoosePhoGenericRhoPtScaledCut1 =cms.EDProducer( PatPhotonNm1Selector,
+                                                    input     = cms.InputTag("goodPhotons"),
+                                                    cut       = cms.string(options['PHOTON_CUTS']),
+                                                    selection = cms.InputTag("egmPhotonIDs:cutBasedPhotonID-Spring16-V2p2-loose"),
+                                                    cutNamesToMask = cms.vstring("MinPtCut_0", "PhoSCEtaMultiRangeCut_0", "PhoSingleTowerHadOverEmCut_0", "PhoFull5x5SigmaIEtaIEtaCut_0", "PhoGenericRhoPtScaledCut_0", "PhoGenericRhoPtScaledCut_2")
+                                                    )
+
+    process.probePhoCutBasedLoosePhoGenericRhoPtScaledCut2 =cms.EDProducer( PatPhotonNm1Selector,
+                                                    input     = cms.InputTag("goodPhotons"),
+                                                    cut       = cms.string(options['PHOTON_CUTS']),
+                                                    selection = cms.InputTag("egmPhotonIDs:cutBasedPhotonID-Spring16-V2p2-loose"),
+                                                    cutNamesToMask = cms.vstring("MinPtCut_0", "PhoSCEtaMultiRangeCut_0", "PhoSingleTowerHadOverEmCut_0", "PhoFull5x5SigmaIEtaIEtaCut_0", "PhoGenericRhoPtScaledCut_0", "PhoGenericRhoPtScaledCut_1")
+                                                    )
+
+
+
     process.probePhoCutBasedMedium = process.probePhoCutBasedLoose.clone()
     process.probePhoCutBasedMedium.selection = cms.InputTag("egmPhotonIDs:cutBasedPhotonID-Spring16-V2p2-medium")
     process.probePhoCutBasedTight = process.probePhoCutBasedLoose.clone()
@@ -72,6 +127,55 @@ def setIDs(process, options):
     process.probePhoCutBasedMedium100XV2.selection = cms.InputTag("egmPhotonIDs:cutBasedPhotonID-Fall17-94X-V2-medium" )
     process.probePhoCutBasedTight100XV2.selection  = cms.InputTag("egmPhotonIDs:cutBasedPhotonID-Fall17-94X-V2-tight"  )
 
+    process.probePhoCutBasedLoose100XV2MinPtCut  = process.probePhoCutBasedLooseMinPtCut.clone()
+    process.probePhoCutBasedMedium100XV2MinPtCut = process.probePhoCutBasedLooseMinPtCut.clone()
+    process.probePhoCutBasedTight100XV2MinPtCut  = process.probePhoCutBasedLooseMinPtCut.clone()
+    process.probePhoCutBasedLoose100XV2MinPtCut.selection  = cms.InputTag("egmPhotonIDs:cutBasedPhotonID-Fall17-94X-V2-loose"  )
+    process.probePhoCutBasedMedium100XV2MinPtCut.selection = cms.InputTag("egmPhotonIDs:cutBasedPhotonID-Fall17-94X-V2-medium" )
+    process.probePhoCutBasedTight100XV2MinPtCut.selection  = cms.InputTag("egmPhotonIDs:cutBasedPhotonID-Fall17-94X-V2-tight"  )
+
+    process.probePhoCutBasedLoose100XV2PhoSCEtaMultiRangeCut  = process.probePhoCutBasedLoosePhoSCEtaMultiRangeCut.clone()
+    process.probePhoCutBasedMedium100XV2PhoSCEtaMultiRangeCut = process.probePhoCutBasedLoosePhoSCEtaMultiRangeCut.clone()
+    process.probePhoCutBasedTight100XV2PhoSCEtaMultiRangeCut  = process.probePhoCutBasedLoosePhoSCEtaMultiRangeCut.clone()
+    process.probePhoCutBasedLoose100XV2PhoSCEtaMultiRangeCut.selection  = cms.InputTag("egmPhotonIDs:cutBasedPhotonID-Fall17-94X-V2-loose"  )
+    process.probePhoCutBasedMedium100XV2PhoSCEtaMultiRangeCut.selection = cms.InputTag("egmPhotonIDs:cutBasedPhotonID-Fall17-94X-V2-medium" )
+    process.probePhoCutBasedTight100XV2PhoSCEtaMultiRangeCut.selection  = cms.InputTag("egmPhotonIDs:cutBasedPhotonID-Fall17-94X-V2-tight"  )
+
+    process.probePhoCutBasedLoose100XV2PhoSingleTowerHadOverEmCut  = process.probePhoCutBasedLoosePhoSingleTowerHadOverEmCut.clone()
+    process.probePhoCutBasedMedium100XV2PhoSingleTowerHadOverEmCut = process.probePhoCutBasedLoosePhoSingleTowerHadOverEmCut.clone()
+    process.probePhoCutBasedTight100XV2PhoSingleTowerHadOverEmCut  = process.probePhoCutBasedLoosePhoSingleTowerHadOverEmCut.clone()
+    process.probePhoCutBasedLoose100XV2PhoSingleTowerHadOverEmCut.selection  = cms.InputTag("egmPhotonIDs:cutBasedPhotonID-Fall17-94X-V2-loose"  )
+    process.probePhoCutBasedMedium100XV2PhoSingleTowerHadOverEmCut.selection = cms.InputTag("egmPhotonIDs:cutBasedPhotonID-Fall17-94X-V2-medium" )
+    process.probePhoCutBasedTight100XV2PhoSingleTowerHadOverEmCut.selection  = cms.InputTag("egmPhotonIDs:cutBasedPhotonID-Fall17-94X-V2-tight"  )
+
+    process.probePhoCutBasedLoose100XV2PhoFull5x5SigmaIEtaIEtaCut  = process.probePhoCutBasedLoosePhoFull5x5SigmaIEtaIEtaCut.clone()
+    process.probePhoCutBasedMedium100XV2PhoFull5x5SigmaIEtaIEtaCut = process.probePhoCutBasedLoosePhoFull5x5SigmaIEtaIEtaCut.clone()
+    process.probePhoCutBasedTight100XV2PhoFull5x5SigmaIEtaIEtaCut  = process.probePhoCutBasedLoosePhoFull5x5SigmaIEtaIEtaCut.clone()
+    process.probePhoCutBasedLoose100XV2PhoFull5x5SigmaIEtaIEtaCut.selection  = cms.InputTag("egmPhotonIDs:cutBasedPhotonID-Fall17-94X-V2-loose"  )
+    process.probePhoCutBasedMedium100XV2PhoFull5x5SigmaIEtaIEtaCut.selection = cms.InputTag("egmPhotonIDs:cutBasedPhotonID-Fall17-94X-V2-medium" )
+    process.probePhoCutBasedTight100XV2PhoFull5x5SigmaIEtaIEtaCut.selection  = cms.InputTag("egmPhotonIDs:cutBasedPhotonID-Fall17-94X-V2-tight"  )
+
+    process.probePhoCutBasedLoose100XV2PhoGenericRhoPtScaledCut0  = process.probePhoCutBasedLoosePhoGenericRhoPtScaledCut0.clone()
+    process.probePhoCutBasedMedium100XV2PhoGenericRhoPtScaledCut0 = process.probePhoCutBasedLoosePhoGenericRhoPtScaledCut0.clone()
+    process.probePhoCutBasedTight100XV2PhoGenericRhoPtScaledCut0  = process.probePhoCutBasedLoosePhoGenericRhoPtScaledCut0.clone()
+    process.probePhoCutBasedLoose100XV2PhoGenericRhoPtScaledCut0.selection  = cms.InputTag("egmPhotonIDs:cutBasedPhotonID-Fall17-94X-V2-loose"  )
+    process.probePhoCutBasedMedium100XV2PhoGenericRhoPtScaledCut0.selection = cms.InputTag("egmPhotonIDs:cutBasedPhotonID-Fall17-94X-V2-medium" )
+    process.probePhoCutBasedTight100XV2PhoGenericRhoPtScaledCut0.selection  = cms.InputTag("egmPhotonIDs:cutBasedPhotonID-Fall17-94X-V2-tight"  )
+
+    process.probePhoCutBasedLoose100XV2PhoGenericRhoPtScaledCut1  = process.probePhoCutBasedLoosePhoGenericRhoPtScaledCut1.clone()
+    process.probePhoCutBasedMedium100XV2PhoGenericRhoPtScaledCut1 = process.probePhoCutBasedLoosePhoGenericRhoPtScaledCut1.clone()
+    process.probePhoCutBasedTight100XV2PhoGenericRhoPtScaledCut1  = process.probePhoCutBasedLoosePhoGenericRhoPtScaledCut1.clone()
+    process.probePhoCutBasedLoose100XV2PhoGenericRhoPtScaledCut1.selection  = cms.InputTag("egmPhotonIDs:cutBasedPhotonID-Fall17-94X-V2-loose"  )
+    process.probePhoCutBasedMedium100XV2PhoGenericRhoPtScaledCut1.selection = cms.InputTag("egmPhotonIDs:cutBasedPhotonID-Fall17-94X-V2-medium" )
+    process.probePhoCutBasedTight100XV2PhoGenericRhoPtScaledCut1.selection  = cms.InputTag("egmPhotonIDs:cutBasedPhotonID-Fall17-94X-V2-tight"  )
+
+    process.probePhoCutBasedLoose100XV2PhoGenericRhoPtScaledCut2  = process.probePhoCutBasedLoosePhoGenericRhoPtScaledCut2.clone()
+    process.probePhoCutBasedMedium100XV2PhoGenericRhoPtScaledCut2 = process.probePhoCutBasedLoosePhoGenericRhoPtScaledCut2.clone()
+    process.probePhoCutBasedTight100XV2PhoGenericRhoPtScaledCut2  = process.probePhoCutBasedLoosePhoGenericRhoPtScaledCut2.clone()
+    process.probePhoCutBasedLoose100XV2PhoGenericRhoPtScaledCut2.selection  = cms.InputTag("egmPhotonIDs:cutBasedPhotonID-Fall17-94X-V2-loose"  )
+    process.probePhoCutBasedMedium100XV2PhoGenericRhoPtScaledCut2.selection = cms.InputTag("egmPhotonIDs:cutBasedPhotonID-Fall17-94X-V2-medium" )
+    process.probePhoCutBasedTight100XV2PhoGenericRhoPtScaledCut2.selection  = cms.InputTag("egmPhotonIDs:cutBasedPhotonID-Fall17-94X-V2-tight"  )
+
     process.probePhoMVA = process.probePhoCutBasedLoose.clone()
     process.probePhoMVA.selection = cms.InputTag("egmPhotonIDs:mvaPhoID-Spring16-nonTrig-V1-wp90")    
     process.probePhoMVA80Xwp90 = process.probePhoCutBasedLoose.clone()
@@ -92,3 +196,4 @@ def setIDs(process, options):
 
 #    process.probePhoMVA94Xwp90.selection = cms.InputTag("egmPhotonIDs:mvaPhoID-Spring16-nonTrig-V1-wp90")    
 #    process.probePhoMVA94Xwp80.selection = cms.InputTag("egmPhotonIDs:mvaPhoID-Spring16-nonTrig-V1-wp90")    
+

@@ -323,6 +323,57 @@ process.tnpEleIDs = cms.EDAnalyzer("TagProbeFitTreeProducer",
                                         passingMedium94XV2  = cms.InputTag("probeEleCutBasedMedium94XV2"),
                                         passingTight94XV2   = cms.InputTag("probeEleCutBasedTight94XV2" ),
 
+                                        #new for N-1
+                                        passingVeto94XV2MinPtCut    = cms.InputTag("probeEleCutBasedVeto94XV2MinPtCut"  ),
+                                        passingLoose94XV2MinPtCut   = cms.InputTag("probeEleCutBasedLoose94XV2MinPtCut" ),
+                                        passingMedium94XV2MinPtCut  = cms.InputTag("probeEleCutBasedMedium94XV2MinPtCut"),
+                                        passingTight94XV2MinPtCut   = cms.InputTag("probeEleCutBasedTight94XV2MinPtCut" ),
+
+                                        passingVeto94XV2GsfEleSCEtaMultiRangeCut    = cms.InputTag("probeEleCutBasedVeto94XV2GsfEleSCEtaMultiRangeCut"  ),
+                                        passingLoose94XV2GsfEleSCEtaMultiRangeCut   = cms.InputTag("probeEleCutBasedLoose94XV2GsfEleSCEtaMultiRangeCut" ),
+                                        passingMedium94XV2GsfEleSCEtaMultiRangeCut  = cms.InputTag("probeEleCutBasedMedium94XV2GsfEleSCEtaMultiRangeCut"),
+                                        passingTight94XV2GsfEleSCEtaMultiRangeCut   = cms.InputTag("probeEleCutBasedTight94XV2GsfEleSCEtaMultiRangeCut" ),
+
+                                        passingVeto94XV2GsfEleDEtaInSeedCut    = cms.InputTag("probeEleCutBasedVeto94XV2GsfEleDEtaInSeedCut"  ),
+                                        passingLoose94XV2GsfEleDEtaInSeedCut   = cms.InputTag("probeEleCutBasedLoose94XV2GsfEleDEtaInSeedCut" ),
+                                        passingMedium94XV2GsfEleDEtaInSeedCut  = cms.InputTag("probeEleCutBasedMedium94XV2GsfEleDEtaInSeedCut"),
+                                        passingTight94XV2GsfEleDEtaInSeedCut   = cms.InputTag("probeEleCutBasedTight94XV2GsfEleDEtaInSeedCut" ),
+
+                                        passingVeto94XV2GsfEleDPhiInCut    = cms.InputTag("probeEleCutBasedVeto94XV2GsfEleDPhiInCut"  ),
+                                        passingLoose94XV2GsfEleDPhiInCut   = cms.InputTag("probeEleCutBasedLoose94XV2GsfEleDPhiInCut" ),
+                                        passingMedium94XV2GsfEleDPhiInCut  = cms.InputTag("probeEleCutBasedMedium94XV2GsfEleDPhiInCut"),
+                                        passingTight94XV2GsfEleDPhiInCut   = cms.InputTag("probeEleCutBasedTight94XV2GsfEleDPhiInCut" ),
+
+                                        passingVeto94XV2GsfEleFull5x5SigmaIEtaIEtaCut    = cms.InputTag("probeEleCutBasedVeto94XV2GsfEleFull5x5SigmaIEtaIEtaCut"  ),
+                                        passingLoose94XV2GsfEleFull5x5SigmaIEtaIEtaCut   = cms.InputTag("probeEleCutBasedLoose94XV2GsfEleFull5x5SigmaIEtaIEtaCut" ),
+                                        passingMedium94XV2GsfEleFull5x5SigmaIEtaIEtaCut  = cms.InputTag("probeEleCutBasedMedium94XV2GsfEleFull5x5SigmaIEtaIEtaCut"),
+                                        passingTight94XV2GsfEleFull5x5SigmaIEtaIEtaCut   = cms.InputTag("probeEleCutBasedTight94XV2GsfEleFull5x5SigmaIEtaIEtaCut" ),
+
+                                        passingVeto94XV2GsfEleHadronicOverEMEnergyScaledCut    = cms.InputTag("probeEleCutBasedVeto94XV2GsfEleHadronicOverEMEnergyScaledCut"  ),
+                                        passingLoose94XV2GsfEleHadronicOverEMEnergyScaledCut   = cms.InputTag("probeEleCutBasedLoose94XV2GsfEleHadronicOverEMEnergyScaledCut" ),
+                                        passingMedium94XV2GsfEleHadronicOverEMEnergyScaledCut  = cms.InputTag("probeEleCutBasedMedium94XV2GsfEleHadronicOverEMEnergyScaledCut"),
+                                        passingTight94XV2GsfEleHadronicOverEMEnergyScaledCut   = cms.InputTag("probeEleCutBasedTight94XV2GsfEleHadronicOverEMEnergyScaledCut" ),
+
+                                        passingVeto94XV2GsfEleEInverseMinusPInverseCut    = cms.InputTag("probeEleCutBasedVeto94XV2GsfEleEInverseMinusPInverseCut"  ),
+                                        passingLoose94XV2GsfEleEInverseMinusPInverseCut   = cms.InputTag("probeEleCutBasedLoose94XV2GsfEleEInverseMinusPInverseCut" ),
+                                        passingMedium94XV2GsfEleEInverseMinusPInverseCut  = cms.InputTag("probeEleCutBasedMedium94XV2GsfEleEInverseMinusPInverseCut"),
+                                        passingTight94XV2GsfEleEInverseMinusPInverseCut   = cms.InputTag("probeEleCutBasedTight94XV2GsfEleEInverseMinusPInverseCut" ),
+
+                                        passingVeto94XV2GsfEleRelPFIsoScaledCut    = cms.InputTag("probeEleCutBasedVeto94XV2GsfEleRelPFIsoScaledCut"  ),
+                                        passingLoose94XV2GsfEleRelPFIsoScaledCut   = cms.InputTag("probeEleCutBasedLoose94XV2GsfEleRelPFIsoScaledCut" ),
+                                        passingMedium94XV2GsfEleRelPFIsoScaledCut  = cms.InputTag("probeEleCutBasedMedium94XV2GsfEleRelPFIsoScaledCut"),
+                                        passingTight94XV2GsfEleRelPFIsoScaledCut   = cms.InputTag("probeEleCutBasedTight94XV2GsfEleRelPFIsoScaledCut" ),
+
+                                        passingVeto94XV2GsfEleConversionVetoCut    = cms.InputTag("probeEleCutBasedVeto94XV2GsfEleConversionVetoCut"  ),
+                                        passingLoose94XV2GsfEleConversionVetoCut   = cms.InputTag("probeEleCutBasedLoose94XV2GsfEleConversionVetoCut" ),
+                                        passingMedium94XV2GsfEleConversionVetoCut  = cms.InputTag("probeEleCutBasedMedium94XV2GsfEleConversionVetoCut"),
+                                        passingTight94XV2GsfEleConversionVetoCut   = cms.InputTag("probeEleCutBasedTight94XV2GsfEleConversionVetoCut" ),
+
+                                        passingVeto94XV2GsfEleMissingHitsCut    = cms.InputTag("probeEleCutBasedVeto94XV2GsfEleMissingHitsCut"  ),
+                                        passingLoose94XV2GsfEleMissingHitsCut   = cms.InputTag("probeEleCutBasedLoose94XV2GsfEleMissingHitsCut" ),
+                                        passingMedium94XV2GsfEleMissingHitsCut  = cms.InputTag("probeEleCutBasedMedium94XV2GsfEleMissingHitsCut"),
+                                        passingTight94XV2GsfEleMissingHitsCut   = cms.InputTag("probeEleCutBasedTight94XV2GsfEleMissingHitsCut" ),
+
                                         passingMVA94XwpLnoiso = cms.InputTag("probeEleMVA94XwpLnoiso" ),
                                         passingMVA94Xwp90noiso = cms.InputTag("probeEleMVA94Xwp90noiso" ),
                                         passingMVA94Xwp80noiso = cms.InputTag("probeEleMVA94Xwp80noiso" ),
@@ -363,6 +414,35 @@ process.tnpPhoIDs = cms.EDAnalyzer("TagProbeFitTreeProducer",
                                          passingLoose100XV2   = cms.InputTag("probePhoCutBasedLoose100XV2"),
                                          passingMedium100XV2  = cms.InputTag("probePhoCutBasedMedium100XV2"),
                                          passingTight100XV2   = cms.InputTag("probePhoCutBasedTight100XV2"),
+
+                                         #new for N-1
+                                         passingLoose100XV2MinPtCut   = cms.InputTag("probePhoCutBasedLoose100XV2MinPtCut"),
+                                         passingMedium100XV2MinPtCut  = cms.InputTag("probePhoCutBasedMedium100XV2MinPtCut"),
+                                         passingTight100XV2MinPtCut   = cms.InputTag("probePhoCutBasedTight100XV2MinPtCut"),
+
+                                         passingLoose100XV2PhoSCEtaMultiRangeCut   = cms.InputTag("probePhoCutBasedLoose100XV2PhoSCEtaMultiRangeCut"),
+                                         passingMedium100XV2PhoSCEtaMultiRangeCut  = cms.InputTag("probePhoCutBasedMedium100XV2PhoSCEtaMultiRangeCut"),
+                                         passingTight100XV2PhoSCEtaMultiRangeCut   = cms.InputTag("probePhoCutBasedTight100XV2PhoSCEtaMultiRangeCut"),
+
+                                         passingLoose100XV2PhoSingleTowerHadOverEmCut   = cms.InputTag("probePhoCutBasedLoose100XV2PhoSingleTowerHadOverEmCut"),
+                                         passingMedium100XV2PhoSingleTowerHadOverEmCut  = cms.InputTag("probePhoCutBasedMedium100XV2PhoSingleTowerHadOverEmCut"),
+                                         passingTight100XV2PhoSingleTowerHadOverEmCut   = cms.InputTag("probePhoCutBasedTight100XV2PhoSingleTowerHadOverEmCut"),
+
+                                         passingLoose100XV2PhoFull5x5SigmaIEtaIEtaCut   = cms.InputTag("probePhoCutBasedLoose100XV2PhoFull5x5SigmaIEtaIEtaCut"),
+                                         passingMedium100XV2PhoFull5x5SigmaIEtaIEtaCut  = cms.InputTag("probePhoCutBasedMedium100XV2PhoFull5x5SigmaIEtaIEtaCut"),
+                                         passingTight100XV2PhoFull5x5SigmaIEtaIEtaCut   = cms.InputTag("probePhoCutBasedTight100XV2PhoFull5x5SigmaIEtaIEtaCut"),
+
+                                         passingLoose100XV2PhoGenericRhoPtScaledCut0   = cms.InputTag("probePhoCutBasedLoose100XV2PhoGenericRhoPtScaledCut0"),
+                                         passingMedium100XV2PhoGenericRhoPtScaledCut0  = cms.InputTag("probePhoCutBasedMedium100XV2PhoGenericRhoPtScaledCut0"),
+                                         passingTight100XV2PhoGenericRhoPtScaledCut0   = cms.InputTag("probePhoCutBasedTight100XV2PhoGenericRhoPtScaledCut0"),
+
+                                         passingLoose100XV2PhoGenericRhoPtScaledCut1   = cms.InputTag("probePhoCutBasedLoose100XV2PhoGenericRhoPtScaledCut1"),
+                                         passingMedium100XV2PhoGenericRhoPtScaledCut1  = cms.InputTag("probePhoCutBasedMedium100XV2PhoGenericRhoPtScaledCut1"),
+                                         passingTight100XV2PhoGenericRhoPtScaledCut1   = cms.InputTag("probePhoCutBasedTight100XV2PhoGenericRhoPtScaledCut1"),
+
+                                         passingLoose100XV2PhoGenericRhoPtScaledCut2   = cms.InputTag("probePhoCutBasedLoose100XV2PhoGenericRhoPtScaledCut2"),
+                                         passingMedium100XV2PhoGenericRhoPtScaledCut2  = cms.InputTag("probePhoCutBasedMedium100XV2PhoGenericRhoPtScaledCut2"),
+                                         passingTight100XV2PhoGenericRhoPtScaledCut2   = cms.InputTag("probePhoCutBasedTight100XV2PhoGenericRhoPtScaledCut2"),
 
 #                                         passingMVA94Xwp90 = cms.InputTag("probePhoMVA94Xwp90"),
 #                                         passingMVA94Xwp80 = cms.InputTag("probePhoMVA94Xwp80"),

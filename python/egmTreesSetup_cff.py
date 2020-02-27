@@ -188,6 +188,57 @@ def setSequences(process, options):
         process.probeEleCutBasedLoose94XV2  +
         process.probeEleCutBasedMedium94XV2 +
         process.probeEleCutBasedTight94XV2  +
+
+        process.probeEleCutBasedVeto94XV2MinPtCut   +
+        process.probeEleCutBasedLoose94XV2MinPtCut  +
+        process.probeEleCutBasedMedium94XV2MinPtCut +
+        process.probeEleCutBasedTight94XV2MinPtCut  +
+
+        process.probeEleCutBasedVeto94XV2GsfEleSCEtaMultiRangeCut   +
+        process.probeEleCutBasedLoose94XV2GsfEleSCEtaMultiRangeCut  +
+        process.probeEleCutBasedMedium94XV2GsfEleSCEtaMultiRangeCut +
+        process.probeEleCutBasedTight94XV2GsfEleSCEtaMultiRangeCut  +
+
+        process.probeEleCutBasedVeto94XV2GsfEleDEtaInSeedCut   +
+        process.probeEleCutBasedLoose94XV2GsfEleDEtaInSeedCut  +
+        process.probeEleCutBasedMedium94XV2GsfEleDEtaInSeedCut +
+        process.probeEleCutBasedTight94XV2GsfEleDEtaInSeedCut  +
+
+        process.probeEleCutBasedVeto94XV2GsfEleDPhiInCut   +
+        process.probeEleCutBasedLoose94XV2GsfEleDPhiInCut  +
+        process.probeEleCutBasedMedium94XV2GsfEleDPhiInCut +
+        process.probeEleCutBasedTight94XV2GsfEleDPhiInCut  +
+
+        process.probeEleCutBasedVeto94XV2GsfEleFull5x5SigmaIEtaIEtaCut   +
+        process.probeEleCutBasedLoose94XV2GsfEleFull5x5SigmaIEtaIEtaCut  +
+        process.probeEleCutBasedMedium94XV2GsfEleFull5x5SigmaIEtaIEtaCut +
+        process.probeEleCutBasedTight94XV2GsfEleFull5x5SigmaIEtaIEtaCut  +
+
+        process.probeEleCutBasedVeto94XV2GsfEleHadronicOverEMEnergyScaledCut   +
+        process.probeEleCutBasedLoose94XV2GsfEleHadronicOverEMEnergyScaledCut  +
+        process.probeEleCutBasedMedium94XV2GsfEleHadronicOverEMEnergyScaledCut +
+        process.probeEleCutBasedTight94XV2GsfEleHadronicOverEMEnergyScaledCut  +
+
+        process.probeEleCutBasedVeto94XV2GsfEleEInverseMinusPInverseCut   +
+        process.probeEleCutBasedLoose94XV2GsfEleEInverseMinusPInverseCut  +
+        process.probeEleCutBasedMedium94XV2GsfEleEInverseMinusPInverseCut +
+        process.probeEleCutBasedTight94XV2GsfEleEInverseMinusPInverseCut  +
+
+        process.probeEleCutBasedVeto94XV2GsfEleRelPFIsoScaledCut   +
+        process.probeEleCutBasedLoose94XV2GsfEleRelPFIsoScaledCut  +
+        process.probeEleCutBasedMedium94XV2GsfEleRelPFIsoScaledCut +
+        process.probeEleCutBasedTight94XV2GsfEleRelPFIsoScaledCut  +
+
+        process.probeEleCutBasedVeto94XV2GsfEleConversionVetoCut   +
+        process.probeEleCutBasedLoose94XV2GsfEleConversionVetoCut  +
+        process.probeEleCutBasedMedium94XV2GsfEleConversionVetoCut +
+        process.probeEleCutBasedTight94XV2GsfEleConversionVetoCut  +
+
+        process.probeEleCutBasedVeto94XV2GsfEleMissingHitsCut   +
+        process.probeEleCutBasedLoose94XV2GsfEleMissingHitsCut  +
+        process.probeEleCutBasedMedium94XV2GsfEleMissingHitsCut +
+        process.probeEleCutBasedTight94XV2GsfEleMissingHitsCut  +
+
         process.probeEleMVA94XwpLnoiso        +
         process.probeEleMVA94Xwp90noiso        +
         process.probeEleMVA94Xwp80noiso        +
@@ -225,6 +276,32 @@ def setSequences(process, options):
         process.probePhoCutBasedLoose100XV2  +
         process.probePhoCutBasedMedium100XV2 +
         process.probePhoCutBasedTight100XV2  +
+
+        process.probePhoCutBasedLoose100XV2MinPtCut  +
+        process.probePhoCutBasedMedium100XV2MinPtCut +
+        process.probePhoCutBasedTight100XV2MinPtCut  +
+        process.probePhoCutBasedLoose100XV2PhoSCEtaMultiRangeCut  +
+        process.probePhoCutBasedMedium100XV2PhoSCEtaMultiRangeCut +
+        process.probePhoCutBasedTight100XV2PhoSCEtaMultiRangeCut  +
+        process.probePhoCutBasedLoose100XV2PhoSingleTowerHadOverEmCut  +
+        process.probePhoCutBasedMedium100XV2PhoSingleTowerHadOverEmCut +
+        process.probePhoCutBasedTight100XV2PhoSingleTowerHadOverEmCut  +
+        process.probePhoCutBasedLoose100XV2PhoFull5x5SigmaIEtaIEtaCut  +
+        process.probePhoCutBasedMedium100XV2PhoFull5x5SigmaIEtaIEtaCut +
+        process.probePhoCutBasedTight100XV2PhoFull5x5SigmaIEtaIEtaCut  +
+
+        process.probePhoCutBasedLoose100XV2PhoGenericRhoPtScaledCut0  +
+        process.probePhoCutBasedMedium100XV2PhoGenericRhoPtScaledCut0 +
+        process.probePhoCutBasedTight100XV2PhoGenericRhoPtScaledCut0  +
+
+        process.probePhoCutBasedLoose100XV2PhoGenericRhoPtScaledCut1  +
+        process.probePhoCutBasedMedium100XV2PhoGenericRhoPtScaledCut1 +
+        process.probePhoCutBasedTight100XV2PhoGenericRhoPtScaledCut1  +
+
+        process.probePhoCutBasedLoose100XV2PhoGenericRhoPtScaledCut2  +
+        process.probePhoCutBasedMedium100XV2PhoGenericRhoPtScaledCut2 +
+        process.probePhoCutBasedTight100XV2PhoGenericRhoPtScaledCut2  +
+
         #process.probePhoMVA94Xwp90       +
         #process.probePhoMVA94Xwp80       +
         process.probePhoMVA94XV2wp90       +

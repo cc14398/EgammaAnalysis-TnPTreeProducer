@@ -29,10 +29,10 @@ def setTagsProbes(process, options):
     ####################### TAG ELECTRON ############################
     process.tagEle = cms.EDProducer(eleHLTProducer,
                                         filterNames = cms.vstring(options['TnPHLTTagFilters']),
-                                        inputs      = cms.InputTag("tagEleCutBasedTight"),
+                                        inputs      = cms.InputTag("tagEleCutBasedHEEP"),
                                         bits        = cms.InputTag('TriggerResults::' + options['HLTProcessName']),
                                         objects     = cms.InputTag(hltObjects),
-                                        dR          = cms.double(0.3),
+                                        dR          = cms.double(0.1),
                                         isAND       = cms.bool(True)
                                     )
 
@@ -103,7 +103,7 @@ def setTagsProbes(process, options):
     
         
     ########################### TnP pairs ############################
-    masscut = cms.string("50<mass<130")         
+    masscut = cms.string("70<mass<110")         
     process.tnpPairingEleHLT   = cms.EDProducer("CandViewShallowCloneCombiner",
                                         decay = cms.string("tagEle@+ probeEle@-"), 
                                         checkCharge = cms.bool(True),
@@ -158,7 +158,8 @@ def setSequences(process, options):
     
     process.tag_sequence = cms.Sequence(
         process.goodElectrons             +
-        process.tagEleCutBasedTight       +
+        #process.tagEleCutBasedTight       +
+        process.tagEleCutBasedHEEP        +
         process.tagEle 
         )
 
@@ -188,6 +189,20 @@ def setSequences(process, options):
         process.probeEleCutBasedLoose94XV2  +
         process.probeEleCutBasedMedium94XV2 +
         process.probeEleCutBasedTight94XV2  +
+        process.probeEleHEEPV70 +
+
+        process.probeEleHEEPV70EtNm1Cut           +
+        process.probeEleHEEPV70EtaNm1Cut          +
+        process.probeEleHEEPV70DEtaInSeedNm1Cut   +
+        process.probeEleHEEPV70DPhiInNm1Cut       +
+        process.probeEleHEEPV70DSIEIENm1Cut       +
+        process.probeEleHEEPV70DE2x5Over5x5Nm1Cut +
+        process.probeEleHEEPV70DHadEmNm1Cut       +
+        process.probeEleHEEPV70DTrkIsoNm1Cut      +
+        process.probeEleHEEPV70EmHad1IsoNm1Cut    +
+        process.probeEleHEEPV70DxyNm1Cut          +
+        process.probeEleHEEPV70MissHitsNm1Cut     +
+        process.probeEleHEEPV70ECALDrivenNm1Cut   +
 
         process.probeEleCutBasedVeto94XV2MinPtCut   +
         process.probeEleCutBasedLoose94XV2MinPtCut  +

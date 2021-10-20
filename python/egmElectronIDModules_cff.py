@@ -22,20 +22,23 @@ def setIDs(process, options):
     # define which IDs we want to produce
     my_id_modules = [
         'RecoEgamma.ElectronIdentification.Identification.cutBasedElectronID_Summer16_80X_V1_cff',
-        'RecoEgamma.ElectronIdentification.Identification.heepElectronID_HEEPV60_cff',
+        'RecoEgamma.ElectronIdentification.Identification.heepElectronID_HEEPV60_cff', # old HEEP ID
         'RecoEgamma.ElectronIdentification.Identification.mvaElectronID_Spring16_GeneralPurpose_V1_cff',
         'RecoEgamma.ElectronIdentification.Identification.cutBasedElectronID_Fall17_94X_V1_cff',
         'RecoEgamma.ElectronIdentification.Identification.mvaElectronID_Fall17_noIso_V1_cff',
         'RecoEgamma.ElectronIdentification.Identification.mvaElectronID_Fall17_iso_V1_cff',
         'RecoEgamma.ElectronIdentification.Identification.mvaElectronID_Fall17_noIso_V2_cff',
         'RecoEgamma.ElectronIdentification.Identification.mvaElectronID_Fall17_iso_V2_cff',
-        'RecoEgamma.ElectronIdentification.Identification.cutBasedElectronID_Fall17_94X_V2_cff'
+        'RecoEgamma.ElectronIdentification.Identification.cutBasedElectronID_Fall17_94X_V2_cff',
+        'RecoEgamma.ElectronIdentification.Identification.heepElectronID_HEEPV70_cff' # HEEP V7.0 
        ]
 
     ### add only miniAOD supported IDs
     if not options['useAOD'] :
         my_id_modules.append( 'RecoEgamma.ElectronIdentification.Identification.cutBasedElectronHLTPreselecition_Summer16_V1_cff' )
-                 
+        # should this be replaced with something from Summer20?
+
+    # add modules to VID producer       
     for idmod in my_id_modules:
         setupAllVIDIdsInModule(process, idmod, setupVIDElectronSelection)
 
@@ -66,6 +69,22 @@ def setIDs(process, options):
     #9 GsfEleEffAreaPFIsoCut
     #10 GsfEleConversionVetoCut
     #11 GsfEleMissingHitsCut
+
+    ######################################################################################
+    ## HEEP ID Reminder
+    ###################################################################################### 
+    #0 Et
+    #1 Eta
+    #11 is ECAL driven
+    #2 abs (delta eta_in seed)
+    #3 abs (delta phi_in)
+    #6 H/E -> 5?
+    #4 full 5x5 sieie 
+    #5 full 5x5 E2x5/E5x5
+    #8? EM + Had depth isolation 1
+    #7 Track isol: trk pt
+    #10 Inner layer lost hits 
+    #9 abs (dxy)
     
     process.probeEleCutBasedVetoMinPtCut = cms.EDProducer(PatElectronNm1Selector,
                                                       input     = cms.InputTag("goodElectrons"),
@@ -139,6 +158,105 @@ def setIDs(process, options):
 
     process.probeEleHLTsafe = process.probeEleCutBasedVeto.clone()
     process.probeEleHLTsafe.selection = cms.InputTag("egmGsfElectronIDs:cutBasedElectronHLTPreselection-Summer16-V1")
+
+    process.probeEleHEEPV70 = process.probeEleCutBasedVeto.clone()
+    process.probeEleHEEPV70.selection = cms.InputTag("egmGsfElectronIDs:heepElectronID-HEEPV70")
+
+    process.probeEleHEEPV70EtNm1Cut = cms.EDProducer(PatElectronNm1Selector,
+                                                      input     = cms.InputTag("goodElectrons"),
+                                                      cut       = cms.string(options['ELECTRON_CUTS']),
+                                                      selection = cms.InputTag("egmGsfElectronIDs:heepElectronID-HEEPV70"),
+                                                      #cutIndicesToMask = cms.vuint32(1,2,3,4,5,6,7,8,9,10,11)
+                                                      cutIndicesToMask =  cms.vuint32(0)
+                                                 )
+
+    process.probeEleHEEPV70EtaNm1Cut = cms.EDProducer(PatElectronNm1Selector,
+                                                      input     = cms.InputTag("goodElectrons"),
+                                                      cut       = cms.string(options['ELECTRON_CUTS']),
+                                                      selection = cms.InputTag("egmGsfElectronIDs:heepElectronID-HEEPV70"),
+                                                      ###cutIndicesToMask = cms.vuint32(1,2,3,4,5,6,7,8,9,10,11)
+                                                      cutIndicesToMask =  cms.vuint32(1)
+                                                 )  
+
+    process.probeEleHEEPV70DEtaInSeedNm1Cut = cms.EDProducer(PatElectronNm1Selector,
+                                                      input     = cms.InputTag("goodElectrons"),
+                                                      cut       = cms.string(options['ELECTRON_CUTS']),
+                                                      selection = cms.InputTag("egmGsfElectronIDs:heepElectronID-HEEPV70"),
+                                                      ###cutIndicesToMask = cms.vuint32(1,2,3,4,5,6,7,8,9,10,11)
+                                                      cutIndicesToMask =  cms.vuint32(2)
+                                                 )                                                  
+
+    process.probeEleHEEPV70DPhiInNm1Cut = cms.EDProducer(PatElectronNm1Selector,
+                                                      input     = cms.InputTag("goodElectrons"),
+                                                      cut       = cms.string(options['ELECTRON_CUTS']),
+                                                      selection = cms.InputTag("egmGsfElectronIDs:heepElectronID-HEEPV70"),
+                                                      ###cutIndicesToMask = cms.vuint32(1,2,3,4,5,6,7,8,9,10,11)
+                                                      cutIndicesToMask =  cms.vuint32(3)
+                                                 )
+
+    process.probeEleHEEPV70DSIEIENm1Cut = cms.EDProducer(PatElectronNm1Selector,
+                                                      input     = cms.InputTag("goodElectrons"),
+                                                      cut       = cms.string(options['ELECTRON_CUTS']),
+                                                      selection = cms.InputTag("egmGsfElectronIDs:heepElectronID-HEEPV70"),
+                                                      ###cutIndicesToMask = cms.vuint32(1,2,3,4,5,6,7,8,9,10,11)
+                                                      cutIndicesToMask =  cms.vuint32(4)
+                                                 )  
+
+    process.probeEleHEEPV70DE2x5Over5x5Nm1Cut = cms.EDProducer(PatElectronNm1Selector,
+                                                      input     = cms.InputTag("goodElectrons"),
+                                                      cut       = cms.string(options['ELECTRON_CUTS']),
+                                                      selection = cms.InputTag("egmGsfElectronIDs:heepElectronID-HEEPV70"),
+                                                      ###cutIndicesToMask = cms.vuint32(1,2,3,4,5,6,7,8,9,10,11)
+                                                      cutIndicesToMask =  cms.vuint32(5)
+                                                 ) 
+
+    process.probeEleHEEPV70DHadEmNm1Cut = cms.EDProducer(PatElectronNm1Selector,
+                                                      input     = cms.InputTag("goodElectrons"),
+                                                      cut       = cms.string(options['ELECTRON_CUTS']),
+                                                      selection = cms.InputTag("egmGsfElectronIDs:heepElectronID-HEEPV70"),
+                                                      ###cutIndicesToMask = cms.vuint32(1,2,3,4,5,6,7,8,9,10,11)
+                                                      cutIndicesToMask =  cms.vuint32(6)
+                                                 ) 
+
+    process.probeEleHEEPV70DTrkIsoNm1Cut = cms.EDProducer(PatElectronNm1Selector,
+                                                      input     = cms.InputTag("goodElectrons"),
+                                                      cut       = cms.string(options['ELECTRON_CUTS']),
+                                                      selection = cms.InputTag("egmGsfElectronIDs:heepElectronID-HEEPV70"),
+                                                      ###cutIndicesToMask = cms.vuint32(1,2,3,4,5,6,7,8,9,10,11)
+                                                      cutIndicesToMask =  cms.vuint32(7)
+                                                 ) 
+
+    process.probeEleHEEPV70EmHad1IsoNm1Cut = cms.EDProducer(PatElectronNm1Selector,
+                                                      input     = cms.InputTag("goodElectrons"),
+                                                      cut       = cms.string(options['ELECTRON_CUTS']),
+                                                      selection = cms.InputTag("egmGsfElectronIDs:heepElectronID-HEEPV70"),
+                                                      ###cutIndicesToMask = cms.vuint32(1,2,3,4,5,6,7,8,9,10,11)
+                                                      cutIndicesToMask =  cms.vuint32(8)
+                                                 ) 
+
+    process.probeEleHEEPV70DxyNm1Cut = cms.EDProducer(PatElectronNm1Selector,
+                                                      input     = cms.InputTag("goodElectrons"),
+                                                      cut       = cms.string(options['ELECTRON_CUTS']),
+                                                      selection = cms.InputTag("egmGsfElectronIDs:heepElectronID-HEEPV70"),
+                                                      ###cutIndicesToMask = cms.vuint32(1,2,3,4,5,6,7,8,9,10,11)
+                                                      cutIndicesToMask =  cms.vuint32(9)
+                                                 ) 
+
+    process.probeEleHEEPV70MissHitsNm1Cut = cms.EDProducer(PatElectronNm1Selector,
+                                                      input     = cms.InputTag("goodElectrons"),
+                                                      cut       = cms.string(options['ELECTRON_CUTS']),
+                                                      selection = cms.InputTag("egmGsfElectronIDs:heepElectronID-HEEPV70"),
+                                                      ###cutIndicesToMask = cms.vuint32(1,2,3,4,5,6,7,8,9,10,11)
+                                                      cutIndicesToMask =  cms.vuint32(10)
+                                                 ) 
+
+    process.probeEleHEEPV70ECALDrivenNm1Cut = cms.EDProducer(PatElectronNm1Selector,
+                                                      input     = cms.InputTag("goodElectrons"),
+                                                      cut       = cms.string(options['ELECTRON_CUTS']),
+                                                      selection = cms.InputTag("egmGsfElectronIDs:heepElectronID-HEEPV70"),
+                                                      ###cutIndicesToMask = cms.vuint32(1,2,3,4,5,6,7,8,9,10,11)
+                                                      cutIndicesToMask =  cms.vuint32(11)
+                                                 ) 
 
     process.probeEleCutBasedLoose  = process.probeEleCutBasedVeto.clone()
     process.probeEleCutBasedMedium = process.probeEleCutBasedVeto.clone()
@@ -304,13 +422,22 @@ def setIDs(process, options):
     process.probeEleCutBasedTight94XV2GsfEleMissingHitsCut.selection  = cms.InputTag("egmGsfElectronIDs:cutBasedElectronID-Fall17-94X-V2-tight"  )
 
 
-    process.tagEleCutBasedTight = cms.EDProducer(eleProducer,
-                                                     input     = cms.InputTag("goodElectrons"),
-                                                     cut       = cms.string(options['ELECTRON_TAG_CUTS']),
-                                                     selection = cms.InputTag("egmGsfElectronIDs:cutBasedElectronID-Fall17-94X-V2-tight"),
-                                                     id_cut    = cms.bool(True)
-                                                )    
-    process.tagEleCutBasedTight.selection = cms.InputTag("egmGsfElectronIDs:cutBasedElectronID-Fall17-94X-V2-tight")
+#    process.tagEleCutBasedTight = cms.EDProducer(eleProducer,
+#                                                     input     = cms.InputTag("goodElectrons"),
+#                                                     cut       = cms.string(options['ELECTRON_TAG_CUTS']),
+#                                                     selection = cms.InputTag("egmGsfElectronIDs:cutBasedElectronID-Fall17-94X-V2-tight"),
+#                                                     id_cut    = cms.bool(True)
+#                                                )    
+#    process.tagEleCutBasedTight.selection = cms.InputTag("egmGsfElectronIDs:cutBasedElectronID-Fall17-94X-V2-tight")
+
+    process.tagEleCutBasedHEEP = cms.EDProducer(eleProducer,
+                                                    input     = cms.InputTag("goodElectrons"),
+                                                     cut       = cms.string(options['ELECTRON_TAG_CUTS']),   
+                                                     selection = cms.InputTag("egmGsfElectronIDs:heepElectronID-HEEPV70"),
+                                                     id_cut = cms.bool(True)
+                                                )
+
+    process.tagEleCutBasedHEEP.selection = cms.InputTag("egmGsfElectronIDs:heepElectronID-HEEPV70") #is this line even necessary? check original code
 
     if options['addSUSY'] :
 

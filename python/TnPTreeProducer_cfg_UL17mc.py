@@ -11,7 +11,7 @@ process = cms.Process("tnpEGM")
 varOptions = VarParsing('analysis')
 
 varOptions.register(
-    "isMC", False,
+    "isMC", True,
     VarParsing.multiplicity.singleton,
     VarParsing.varType.bool,
     "Compute MC efficiencies"
@@ -67,8 +67,8 @@ varOptions.register(
     #"GT","94X_mc2017_realistic_v12",
     #"GT","106X_dataRun2_v17",
     #"GT","106X_mc2017_realistic_v7",
-    "GT","106X_dataRun2_v20", #UL17
-    #"GT","106X_mc2017_realistic_v6", # MC UL17
+    #"GT","106X_dataRun2_v20", #UL17
+    "GT","106X_mc2017_realistic_v6", # MC UL17
     #"GT","106X_dataRun2_v24", ## Data UL2018
     #"GT","106X_upgrade2018_realistic_v9", ## MC UL2018
     VarParsing.multiplicity.singleton,
@@ -330,15 +330,16 @@ process.tnpEleIDs = cms.EDAnalyzer("TagProbeFitTreeProducer",
                                         passingHEEPV70EtNm1Cut = cms.InputTag("probeEleHEEPV70EtNm1Cut"),
                                         passingHEEPV70EtaNm1Cut = cms.InputTag("probeEleHEEPV70EtaNm1Cut"),
                                         passingHEEPV70EtDEtaInSeedNm1Cut = cms.InputTag("probeEleHEEPV70DEtaInSeedNm1Cut"),
-                                        passingEleHEEPV70DPhiInNm1Cut = cms.InputTag("probeEleHEEPV70DPhiInNm1Cut"),
-                                        passingEleHEEPV70DSIEIENm1Cut = cms.InputTag("probeEleHEEPV70DSIEIENm1Cut"),
-                                        passingEleHEEPV70DE2x5Over5x5Nm1Cut = cms.InputTag("probeEleHEEPV70DE2x5Over5x5Nm1Cut"),
-                                        passingEleHEEPV70DHadEmNm1Cut = cms.InputTag("probeEleHEEPV70DHadEmNm1Cut"),
-                                        passingEleHEEPV70DTrkIsoNm1Cut = cms.InputTag("probeEleHEEPV70DTrkIsoNm1Cut"),
-                                        passingEleHEEPV70EmHad1IsoNm1Cut = cms.InputTag("probeEleHEEPV70EmHad1IsoNm1Cut"),
-                                        passingEleHEEPV70DxyNm1Cut = cms.InputTag("probeEleHEEPV70DxyNm1Cut"),
-                                        passingEleHEEPV70MissHitsNm1Cut = cms.InputTag("probeEleHEEPV70MissHitsNm1Cut"),
-                                        passingEleHEEPV70ECALDrivenNm1Cut = cms.InputTag("probeEleHEEPV70ECALDrivenNm1Cut"),
+                                        passingHEEPV70PhiInNm1Cut = cms.InputTag("probeEleHEEPV70DPhiInNm1Cut"),
+                                        passingHEEPV70SIEIENm1Cut = cms.InputTag("probeEleHEEPV70DSIEIENm1Cut"),
+                                        passingHEEPV70E2x5Over5x5Nm1Cut = cms.InputTag("probeEleHEEPV70DE2x5Over5x5Nm1Cut"),
+                                        passingHEEPV70HadEmNm1Cut = cms.InputTag("probeEleHEEPV70DHadEmNm1Cut"),
+                                        passingHEEPV70TrkIsoNm1Cut = cms.InputTag("probeEleHEEPV70DTrkIsoNm1Cut"),
+                                        passingHEEPV70EmHad1IsoNm1Cut = cms.InputTag("probeEleHEEPV70EmHad1IsoNm1Cut"),
+                                        passingHEEPV70DxyNm1Cut = cms.InputTag("probeEleHEEPV70DxyNm1Cut"),
+                                        passingHEEPV70MissHitsNm1Cut = cms.InputTag("probeEleHEEPV70MissHitsNm1Cut"),
+                                        passingHEEPV70ECALDrivenNm1Cut = cms.InputTag("probeEleHEEPV70ECALDrivenNm1Cut"),
+
 
                                         passingVeto94XV2MinPtCut    = cms.InputTag("probeEleCutBasedVeto94XV2MinPtCut"  ),
                                         passingLoose94XV2MinPtCut   = cms.InputTag("probeEleCutBasedLoose94XV2MinPtCut" ),

@@ -29,7 +29,8 @@ def setTagsProbes(process, options):
     ####################### TAG ELECTRON ############################
     process.tagEle = cms.EDProducer(eleHLTProducer,
                                         filterNames = cms.vstring(options['TnPHLTTagFilters']),
-                                        inputs      = cms.InputTag("tagEleCutBasedHEEP"),
+                                        inputs      = cms.InputTag("goodElectrons"),
+                                        #("tagEleCutBasedHEEP"),
                                         bits        = cms.InputTag('TriggerResults::' + options['HLTProcessName']),
                                         objects     = cms.InputTag(hltObjects),
                                         dR          = cms.double(0.1),

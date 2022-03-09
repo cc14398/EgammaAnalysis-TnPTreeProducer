@@ -125,6 +125,14 @@ EleProbeVariablesToStore = cms.PSet(
     el_eelepout       = cms.string("eEleClusterOverPout()"),
     el_IoEmIop        = cms.InputTag("eleVarHelper:ioemiop"),
 
+    # energy correction 
+    el_ecalEnergyPostCorr   = cms.string("userFloat('ecalEnergyPostCorr')"),
+    el_ecalTrkEnergyPostCorr = cms.string("userFloat('ecalTrkEnergyPostCorr')"),
+    el_energyScaleUp   = cms.string("userFloat('energyScaleUp')"),
+    el_energyScaleDn = cms.string("userFloat('energyScaleDown')"),
+    el_energySigmaUp   = cms.string("userFloat('energySigmaUp')"),
+    el_energySigmaDn = cms.string("userFloat('energySigmaDown')"),
+
     )
 
 #print ("just before PhoProbeVariablesToStore in egmTreesContent")
@@ -192,7 +200,19 @@ TagVariablesToStore = cms.PSet(
     Ele_IsoMVA94X   = cms.InputTag("electronMVAValueMapProducer:ElectronMVAEstimatorRun2Fall17IsoV1Values"),
     Ele_noIsoMVA94XV2   = cms.InputTag("electronMVAValueMapProducer:ElectronMVAEstimatorRun2Fall17NoIsoV2Values"), 
     Ele_IsoMVA94XV2   = cms.InputTag("electronMVAValueMapProducer:ElectronMVAEstimatorRun2Fall17IsoV2Values"),
+    # energy correction 
+    Ele_ecalEnergyPostCorr   = cms.string("userFloat('ecalEnergyPostCorr')"),
+    Ele_ecalTrkEnergyPostCorr = cms.string("userFloat('ecalTrkEnergyPostCorr')"),
+    Ele_energyScaleUp   = cms.string("userFloat('energyScaleUp')"),
+    Ele_energyScaleDn = cms.string("userFloat('energyScaleDown')"),
+    Ele_energySigmaUp   = cms.string("userFloat('energySigmaUp')"),
+    Ele_energySigmaDn = cms.string("userFloat('energySigmaDown')"),
 
+    #other useful tag things
+    Ele_ecalEnergy    = cms.string("ecalEnergy()"),
+    Ele_5x5_r9        = cms.string("full5x5_showerShape().r9"),
+    Ele_r9            = cms.string("showerShape().r9"),
+    Ele_ecalDriven    = cms.string("ecalDrivenSeed"),
     )
 
 CommonStuffForGsfElectronProbe = cms.PSet(

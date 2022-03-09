@@ -174,7 +174,7 @@ options['TnPHLTTagFilters']    = cms.vstring("hltEle32L1DoubleEGWPTightGsfTrackI
 #options['TnPHLTTagFilters']    = cms.vstring("hltEle32WPTightGsfTrackIsoFilter")
 
 options['TnPHLTProbeFilters']  = cms.vstring()
-options['HLTFILTERTOMEASURE']  = cms.vstring("hltEle32WPTightGsfTrackIsoFilter")
+options['HLTFILTERTOMEASURE']  = cms.vstring("hltEle32L1DoubleEGWPTightGsfTrackIsoFilter","hltEGL1SingleEGOrFilter")
 
 ###options['GLOBALTAG']           = 'auto:run2_data'
 
@@ -230,7 +230,7 @@ process.MessageLogger.cerr.threshold = ''
 process.MessageLogger.cerr.FwkReport.reportEvery = 1000
 
 process.source = cms.Source("PoolSource",
-                            fileNames = options['INPUT_FILE_NAME'],
+                            fileNames = cms.untracked.vstring(varOptions.inputFiles)# options['INPUT_FILE_NAME'],
                             )
 process.maxEvents = cms.untracked.PSet( input = options['MAXEVENTS'])
 #process.maxEvents = cms.untracked.PSet(

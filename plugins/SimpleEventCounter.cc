@@ -26,13 +26,17 @@
 
 #include "FWCore/Framework/interface/Event.h"
 #include "FWCore/Framework/interface/MakerMacros.h"
+#include "FWCore/Utilities/interface/EDGetToken.h"
+#include "FWCore/Utilities/interface/InputTag.h"
 
 #include "FWCore/ParameterSet/interface/ParameterSet.h"
 
 #include "FWCore/ServiceRegistry/interface/Service.h"
 #include "CommonTools/UtilAlgos/interface/TFileService.h"
 
-#include "TH1F.h"
+#include "SimDataFormats/GeneratorProducts/interface/GenEventInfoProduct.h"
+
+#include "TTree.h"
 
 //
 // class declaration
@@ -57,25 +61,20 @@ private:
   virtual void analyze(const edm::Event&, const edm::EventSetup&) override;
   virtual void endJob() override;
 
-  // ----------member data ---------------------------
-  edm::Service<TFileService> fs_;
   // to keep track of the sum of weights
-  TH1F *h_sumW;
+  int nrTot_ = 0;
+  float nrTotWeights_ = 0.;
+  float nrTotWeightsSQ_ = 0.;
+
+  edm::EDGetTokenT<GenEventInfoProduct> genEvtInfoToken_;
+
 };
-
-//
-// constants, enums and typedefs
-//
-
-//
-// static data member definitions
-//
 
 //
 // constructors and destructor
 //
-SimpleEventCounter::SimpleEventCounter(const edm::ParameterSet& iConfig)
-
+SimpleEventCounter::SimpleEventCounter(const edm::ParameterSet& iConfig):
+  genEvtInfoToken_(consumes<GenEventInfoProduct>(iConfig.getParameter<edm::InputTag>("genEvtInfoTag")))
 {
   //now do what ever initialization is needed
   usesResource("TFileService");
@@ -100,22 +99,13 @@ SimpleEventCounter::~SimpleEventCounter()
 void
 SimpleEventCounter::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetup)
 {
-  using namespace edm;
-
-
-
-#ifdef THIS_IS_AN_EVENT_EXAMPLE
-  Handle<ExampleData> pIn;
-  iEvent.getByLabel("example",pIn);
-#endif
-   
-#ifdef THIS_IS_AN_EVENTSETUP_EXAMPLE
-  ESHandle<SetupData> pSetup;
-  iSetup.get<SetupRecord>().get(pSetup);
-#endif
-
-  // To keep track of the sum of weights
-  h_sumW->Fill(0.5);
+ 
+  auto genEvtInfoHandle = iEvent.getHandle(genEvtInfoToken_);
+  float weight = genEvtInfoHandle.isValid() ? genEvtInfoHandle->weight() : 1.;
+    
+  nrTot_++;
+  nrTotWeights_+=weight;
+  nrTotWeightsSQ_+=weight*weight;
 
 }
 
@@ -124,15 +114,22 @@ SimpleEventCounter::analyze(const edm::Event& iEvent, const edm::EventSetup& iSe
 void 
 SimpleEventCounter::beginJob()
 {
-  // to keep track of the sum of weights
-  h_sumW = fs_->make<TH1F>("h_sumW", "h_sumW", 1,  0., 1.);
-  h_sumW->Sumw2();
+  
 }
 
 // ------------ method called once each job just after ending the event loop  ------------
 void 
 SimpleEventCounter::endJob() 
 {
+  edm::Service<TFileService> fs;
+  if(fs.isAvailable()){
+    TTree* tree = fs->make<TTree>("eventCountTree","event count tree");
+    tree->Branch("nrTot",&nrTot_,"nrTot/I");
+    tree->Branch("nrTotWeights",&nrTotWeights_,"nrTotWeights/F");
+    tree->Branch("nrTotWeightsSQ",&nrTotWeightsSQ_,"nrTotWeightsSQ/F");    
+    tree->Fill();
+  }
+
 }
 
 // ------------ method fills 'descriptions' with the allowed parameters for the module  ------------
@@ -141,7 +138,7 @@ SimpleEventCounter::fillDescriptions(edm::ConfigurationDescriptions& description
   //The following says we do not know what parameters are allowed so do no validation
   // Please change this to state exactly what you do use, even if it is no parameters
   edm::ParameterSetDescription desc;
-  desc.setUnknown();
+  desc.add<edm::InputTag>("genEvtInfoTag",edm::InputTag("generator"));
   descriptions.addDefault(desc);
 }
 

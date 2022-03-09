@@ -230,7 +230,7 @@ process.MessageLogger.cerr.threshold = ''
 process.MessageLogger.cerr.FwkReport.reportEvery = 1000
 
 process.source = cms.Source("PoolSource",
-                            fileNames = options['INPUT_FILE_NAME'],
+                            fileNames = cms.untracked.vstring(varOptions.inputFiles)#options['INPUT_FILE_NAME'],
                             )
 process.maxEvents = cms.untracked.PSet( input = options['MAXEVENTS'])
 #process.maxEvents = cms.untracked.PSet(
@@ -475,7 +475,7 @@ if not options['useAOD'] :
 
 # Add SUSY variables to the "variables", add SUSY IDs to the "flags"
 if options['addSUSY'] :
-    setattr( process.tnpEleIDs.variables , 'el_miniIsoChg', cms.string("userFloat('miniIsoChg')") )
+    setattr( process.tnpEleIDs.variables , 'el_miniIsoChg', cms.string("('miniIsoChg')") )
     setattr( process.tnpEleIDs.variables , 'el_miniIsoAll', cms.string("userFloat('miniIsoAll')") )
     setattr( process.tnpEleIDs.variables , 'el_ptRatio', cms.string("userFloat('ptRatio')") )
     setattr( process.tnpEleIDs.variables , 'el_ptRatioUncorr', cms.string("userFloat('ptRatioUncorr')") )
@@ -528,7 +528,6 @@ process.p = cms.Path(
         )
 
 #print (" --- process.p successful")
-
 process.TFileService = cms.Service(
     "TFileService", fileName = cms.string(options['OUTPUT_FILE_NAME']),
     closeFileFast = cms.untracked.bool(True)

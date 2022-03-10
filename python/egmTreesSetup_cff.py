@@ -358,6 +358,7 @@ def customize( tnpTree, options ):
     if options['isMC'] :
         tnpTree.isMC = cms.bool( True ) 
         tnpTree.eventWeight = cms.InputTag("generator")
+        tnpTree.lheEvent = cms.InputTag("externalLHEProducer")
         tnpTree.PUWeightSrc = cms.InputTag("pileupReweightingProducer","pileupWeights")
     else:
         tnpTree.isMC = cms.bool( False ) 

@@ -434,7 +434,8 @@ def setIDs(process, options):
                                                     input     = cms.InputTag("goodElectrons"),
                                                      cut       = cms.string(options['ELECTRON_TAG_CUTS']),   
                                                      selection = cms.InputTag("egmGsfElectronIDs:heepElectronID-HEEPV70"),
-                                                     id_cut = cms.bool(True)
+                                                     cutIndicesToMask =  cms.vuint32(0), # apply HEEP ID but mask Et cut to get full turn on curve
+                                                     id_cut = cms.bool(True) # not sure what this does, didn't use it for any HEEP N-1
                                                 )
 
     process.tagEleCutBasedHEEP.selection = cms.InputTag("egmGsfElectronIDs:heepElectronID-HEEPV70") #is this line even necessary? check original code

@@ -112,10 +112,10 @@ if options['useAOD']:
     options['PHOTON_COLL'  ]    = "gedPhotons"
 
 
-options['ELECTRON_CUTS']        = "(abs(superCluster.eta)<2.5) && !(1.4442< abs(superCluster.eta) <1.566) && (energy*sin(theta))>35"
+options['ELECTRON_CUTS']        = "(abs(superCluster.eta)<2.5) && !(1.4442< abs(superCluster.eta) <1.566) && (energy*sin(theta))>20" # Reduce Et cut
 options['SUPERCLUSTER_CUTS']    = ""
 options['PHOTON_CUTS']          = ""
-options['ELECTRON_TAG_CUTS']    = "(abs(superCluster.eta)<1.4442)"
+options['ELECTRON_TAG_CUTS']    = "(abs(superCluster.eta)<1.4442)" #Keep tag barrel requirement
 
 options['MAXEVENTS']            = cms.untracked.int32(varOptions.maxEvents) 
 #options['MAXEVENTS']            = 2000
@@ -230,7 +230,7 @@ process.MessageLogger.cerr.threshold = ''
 process.MessageLogger.cerr.FwkReport.reportEvery = 1000
 
 process.source = cms.Source("PoolSource",
-                            fileNames = cms.untracked.vstring(varOptions.inputFiles)#options['INPUT_FILE_NAME'],
+                            fileNames = options['INPUT_FILE_NAME'],
                             )
 process.maxEvents = cms.untracked.PSet( input = options['MAXEVENTS'])
 #process.maxEvents = cms.untracked.PSet(

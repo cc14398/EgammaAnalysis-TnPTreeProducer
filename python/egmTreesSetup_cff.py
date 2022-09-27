@@ -33,7 +33,7 @@ def setTagsProbes(process, options):
                                         bits        = cms.InputTag('TriggerResults::' + options['HLTProcessName']),
                                         objects     = cms.InputTag(hltObjects),
                                         dR          = cms.double(0.1),
-                                        isAND       = cms.bool(True)
+                                        isAND       = cms.bool(True) # Are all the "isAND"s correct? Feel like there was a problem with one in the past
                                     )
 
     ##################### PROBE ELECTRONs ###########################
@@ -45,7 +45,7 @@ def setTagsProbes(process, options):
     process.probeElePassHLT              = process.tagEle.clone()
     process.probeElePassHLT.inputs       = cms.InputTag("probeEle")  
     process.probeElePassHLT.filterNames  = cms.vstring(options['HLTFILTERTOMEASURE'])
-    process.probeElePassHLT.isAND        = cms.bool(False)
+    process.probeElePassHLT.isAND        = cms.bool(False) # Are all the "isAND"s correct? Feel like there was a problem with one in the past
 
     ###################### PROBE PHOTONs ############################
     process.probePho  = cms.EDProducer( gamHLTProducer,
@@ -54,7 +54,7 @@ def setTagsProbes(process, options):
                                         bits        = cms.InputTag('TriggerResults::' + options['HLTProcessName'] ),
                                         objects     = cms.InputTag(hltObjects),
                                         dR          = cms.double(0.3),
-                                        isAND       = cms.bool(True)
+                                        isAND       = cms.bool(True) # Are all the "isAND"s correct? Feel like there was a problem with one in the past
                                         )
     if options['useAOD'] : process.probePho = process.goodPhotons.clone()
     
@@ -65,7 +65,7 @@ def setTagsProbes(process, options):
                                              bits         = cms.InputTag('TriggerResults::' + options['HLTProcessName']),
                                              objects      = cms.InputTag(hltObjects),
                                              dR           = cms.double(0.3),
-                                             isAND        = cms.bool(True)
+                                             isAND        = cms.bool(True) # Are all the "isAND"s correct? Feel like there was a problem with one in the past
                                         )
        
     process.probeSCEle = cms.EDProducer( SCEleMatcher,

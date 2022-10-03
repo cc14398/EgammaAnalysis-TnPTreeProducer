@@ -112,7 +112,7 @@ if options['useAOD']:
     options['PHOTON_COLL'  ]    = "gedPhotons"
 
 
-options['ELECTRON_CUTS']        = "(abs(superCluster.eta)<2.5) && !(1.4442< abs(superCluster.eta) <1.566)" # Reduce Et cut
+options['ELECTRON_CUTS']        = "(abs(superCluster.eta)<2.5 && !(1.4442< abs(superCluster.eta) <1.566) && energy*sin(theta)>20)" # Reduce Et cut
 options['SUPERCLUSTER_CUTS']    = ""
 options['PHOTON_CUTS']          = ""
 #options['ELECTRON_TAG_CUTS']    = "(abs(superCluster.eta)<1.4442 && (energy*sin(theta))>20 && (userInt('heepElectronID-HEEPV70')&0xFFE)==0xFFE)" #Keep tag barrel requirement

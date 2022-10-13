@@ -70,7 +70,9 @@ EleProbeVariablesToStore = cms.PSet(
     el_5x5_circularity = cms.InputTag("eleVarHelper:5x5circularity"),
     el_5x5_hoe       = cms.string("full5x5_hcalOverEcal()"),
 
-    el_hoe           = cms.string("hadronicOverEm()"),    
+    el_hoe           = cms.string("hadronicOverEm()"), 
+    el_hcalDepth1OverE  = cms.string("showerShape().hcalDepth1OverEcal"),    
+    el_hcalDepth2OverE  = cms.string("showerShape().hcalDepth2OverEcal"),   
     el_hoe_bc           = cms.string("hcalOverEcalBc"),
     el_eoverp_wES        = cms.string("(superCluster().rawEnergy+superCluster().preshowerEnergy)/gsfTrack().pMode()"),
     el_1overEminus1overP        = cms.string("abs(1-eSuperClusterOverP())/ecalEnergy()"),
@@ -89,7 +91,9 @@ EleProbeVariablesToStore = cms.PSet(
     el_chIso         = cms.string("pfIsolationVariables().sumChargedHadronPt"),
     el_phoIso        = cms.string("pfIsolationVariables().sumPhotonEt"),
     el_neuIso        = cms.string("pfIsolationVariables().sumNeutralHadronEt"),
-    el_ecalIso       = cms.string("ecalPFClusterIso"),
+    el_ecalIso       = cms.string("ecalPFClusterIso"), 
+    el_dr03HcalDepth1TowerIso    = cms.string("dr03HcalDepth1TowerSumEt"),
+    el_dr03HcalDepth2TowerIso    = cms.string("dr03HcalDepth2TowerSumEt"),
     el_dr03EcalRecHitSumEt       = cms.string("dr03EcalRecHitSumEt"),
     el_hcalIso       = cms.string("hcalPFClusterIso"),
     el_trkIso        = cms.string("trackIso"),
@@ -132,6 +136,9 @@ EleProbeVariablesToStore = cms.PSet(
     el_energyScaleDn = cms.string("userFloat('energyScaleDown')"),
     el_energySigmaUp   = cms.string("userFloat('energySigmaUp')"),
     el_energySigmaDn = cms.string("userFloat('energySigmaDown')"),
+    
+    el_heepIDV70 = cms.string("userInt('heepElectronID-HEEPV70')"),
+    el_heepIDV71 = cms.string("userInt('heepElectronID-HEEPV71')"),
 
     )
 
@@ -190,7 +197,7 @@ TagVariablesToStore = cms.PSet(
 #    Ele_mHits         = cms.InputTag("eleVarHelper:missinghits"),
     Ele_dz            = cms.InputTag("eleVarHelper:dz"),
     Ele_dxy           = cms.InputTag("eleVarHelper:dxy"),
-    el_sip           = cms.InputTag("eleVarHelper:sip"),
+    Ele_sip           = cms.InputTag("eleVarHelper:sip"),
     Ele_nonTrigMVA80X    = cms.InputTag("electronMVAValueMapProducer:ElectronMVAEstimatorRun2Spring16GeneralPurposeV1Values"),
     Ele_hzzMVA80X    = cms.InputTag("electronMVAValueMapProducer:ElectronMVAEstimatorRun2Spring16HZZV1Values"),
 
@@ -213,6 +220,23 @@ TagVariablesToStore = cms.PSet(
     Ele_5x5_r9        = cms.string("full5x5_showerShape().r9"),
     Ele_r9            = cms.string("showerShape().r9"),
     Ele_ecalDriven    = cms.string("ecalDrivenSeed"),
+    
+    Ele_dPhiIn        = cms.string("deltaPhiSuperClusterTrackAtVtx"),
+    Ele_dEtaSeed      = cms.string("deltaEtaSeedClusterTrackAtVtx"),
+    Ele_5x5_e1x5      = cms.string("full5x5_showerShape().e1x5"),
+    Ele_5x5_e2x5      = cms.string("full5x5_showerShape().e2x5Max"),
+    Ele_5x5_e5x5      = cms.string("full5x5_showerShape().e5x5"),
+    Ele_hoe           = cms.string("hadronicOverEm()"), 
+    Ele_hcalDepth1OverE  = cms.string("showerShape().hcalDepth1OverEcal"),    
+    Ele_hcalDepth2OverE  = cms.string("showerShape().hcalDepth2OverEcal"),    
+    Ele_mHits         = cms.InputTag("eleVarHelper:missinghits"),
+    Ele_dr03TkSumPt   = cms.string("dr03TkSumPt"), 
+    Ele_dr03HcalDepth1TowerIso    = cms.string("dr03HcalDepth1TowerSumEt"),
+    Ele_dr03HcalDepth2TowerIso    = cms.string("dr03HcalDepth2TowerSumEt"),
+    Ele_dr03EcalRecHitSumEt       = cms.string("dr03EcalRecHitSumEt"),
+    
+    Ele_heepIDV70 = cms.string("userInt('heepElectronID-HEEPV70')"),
+    Ele_heepIDV71 = cms.string("userInt('heepElectronID-HEEPV71')"),
     )
 
 CommonStuffForGsfElectronProbe = cms.PSet(

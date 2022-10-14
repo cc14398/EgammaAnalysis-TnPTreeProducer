@@ -443,7 +443,7 @@ def setIDs(process, options):
                                                       input     = cms.InputTag("goodElectrons"),
                                                       cut       = cms.string(options['ELECTRON_TAG_CUTS']),
                                                       selection = cms.InputTag("egmGsfElectronIDs:heepElectronID-HEEPV70"),
-                                                      cutIndicesToMask =  cms.vuint32(0)
+                                                      #cutIndicesToMask =  cms.vuint32(0) #should be fine with full HEEP ID for tag
                                                  )
 
     if options['addSUSY'] :

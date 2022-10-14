@@ -112,11 +112,10 @@ if options['useAOD']:
     options['PHOTON_COLL'  ]    = "gedPhotons"
 
 
-options['ELECTRON_CUTS']        = "(abs(superCluster.eta)<2.5 && !(1.4442< abs(superCluster.eta) <1.566) && energy*sin(theta)>20)" # Reduce Et cut
+options['ELECTRON_CUTS']        = "(abs(superCluster.eta)<1.4442)" #Require probe in barrel
 options['SUPERCLUSTER_CUTS']    = ""
 options['PHOTON_CUTS']          = ""
-#options['ELECTRON_TAG_CUTS']    = "(abs(superCluster.eta)<1.4442 && (energy*sin(theta))>20 && (userInt('heepElectronID-HEEPV70')&0xFFE)==0xFFE)" #Keep tag barrel requirement
-options['ELECTRON_TAG_CUTS']    = "(abs(superCluster.eta)<1.4442 && (energy*sin(theta))>20 )" #Keep tag barrel requirement
+options['ELECTRON_TAG_CUTS']    = "(abs(superCluster.eta)<1.4442 && (energy*sin(theta))>20 )" #Tag in barrel, can put in 35 GeV scaled/smeared cut afterwards, 20 fine here to reduce events
 
 options['MAXEVENTS']            = cms.untracked.int32(varOptions.maxEvents) 
 #options['MAXEVENTS']            = 2000
@@ -231,7 +230,8 @@ process.MessageLogger.cerr.threshold = ''
 process.MessageLogger.cerr.FwkReport.reportEvery = 1000
 
 process.source = cms.Source("PoolSource",
-                            fileNames = cms.untracked.vstring(varOptions.inputFiles)
+                            fileNames = options['INPUT_FILE_NAME'],
+                            #cms.untracked.vstring(varOptions.inputFiles)
                             )
 process.maxEvents = cms.untracked.PSet( input = options['MAXEVENTS'])
 #process.maxEvents = cms.untracked.PSet(
@@ -316,6 +316,8 @@ process.tnpEleIDs = cms.EDAnalyzer("TagProbeFitTreeProducer",
                                         passingMVA80Xwp80 = cms.InputTag("probeEleMVA80Xwp80" ),
 
                                         passingHEEPV70 = cms.InputTag("probeEleHEEPV70"),
+
+                                        passingHLT = cms.InputTag("probeElePassHLT"),
 
                                         passingVeto94X    = cms.InputTag("probeEleCutBasedVeto94X"  ),
                                         passingLoose94X   = cms.InputTag("probeEleCutBasedLoose94X" ),

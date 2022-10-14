@@ -17,7 +17,7 @@ config.JobType.pluginName  = 'Analysis'
 
 # Name of the CMSSW configuration file
 #config.JobType.psetName  = '/afs/cern.ch/work/a/asroy/public/EGammaWork/Tag-and-Probe/CMSSW_10_6_4_patch1/src/EgammaAnalysis/TnPTreeProducer/python/TnPTreeProducer_cfg.py'
-config.JobType.psetName  = '/afs/cern.ch/work/c/ccooke/CMSSW_10_6_13/src/EgammaAnalysis/TnPTreeProducer/python/TnPTreeProducer_cfg.py'
+config.JobType.psetName  = '/afs/cern.ch/work/c/ccooke/HLTEnerCorr/CMSSW_10_6_13/src/EgammaAnalysis/TnPTreeProducer/python/TnPTreeProducer_cfg_UL17data.py'
 config.Data.allowNonValidInputDataset = True
 
 config.Data.inputDBS = 'global'
@@ -28,7 +28,7 @@ config.Site.storageSite = 'T2_UK_SGrid_Bristol'
 
 #add another copy of this up here to see if that makes CRAB happy
 #config.Data.inputDataset = '/DoubleEG/Run2017F-09Aug2019_UL2017-v1/MINIAOD'
-config.Data.inputDataset = '/SingleElectron/Run2017E-09Aug2019_UL2017-v1/MINIAOD'
+config.Data.inputDataset = '/SingleElectron/Run2017E-UL2017_MiniAODv2-v1/MINIAOD'
 
 config.Data.outLFNDirBase = '%s/%s/' % (mainOutputDir,'data')
 #config.Data.splitting     = 'LumiBased'

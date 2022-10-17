@@ -421,30 +421,16 @@ def setIDs(process, options):
     process.probeEleCutBasedTight94XV2GsfEleMissingHitsCut.selection  = cms.InputTag("egmGsfElectronIDs:cutBasedElectronID-Fall17-94X-V2-tight"  )
 
 
-#    process.tagEleCutBasedTight = cms.EDProducer(eleProducer,
-#                                                     input     = cms.InputTag("goodElectrons"),
-#                                                     cut       = cms.string(options['ELECTRON_TAG_CUTS']),
-#                                                     selection = cms.InputTag("egmGsfElectronIDs:cutBasedElectronID-Fall17-94X-V2-tight"),
-#                                                     id_cut    = cms.bool(True)
-#                                                )    
-#    process.tagEleCutBasedTight.selection = cms.InputTag("egmGsfElectronIDs:cutBasedElectronID-Fall17-94X-V2-tight")
 
-    #process.tagEleCutBasedHEEP = cms.EDProducer(eleProducer,
-     #                                               input     = cms.InputTag("goodElectrons"),
-      #                                               cut       = cms.string(options['ELECTRON_TAG_CUTS']),   
-       #                                              selection = cms.InputTag("egmGsfElectronIDs:heepElectronID-HEEPV70"),
-        #                                             cutIndicesToMask =  cms.vuint32(0), # apply HEEP ID but mask Et cut to get full turn on curve
-         #                                            id_cut = cms.bool(True) # not sure what this does, didn't use it for any HEEP N-1
-    #                                            )
+    process.tagEleCutBasedHEEP = cms.EDProducer(eleProducer,
+                                                    input     = cms.InputTag("goodElectrons"),
+                                                     cut       = cms.string(options['ELECTRON_TAG_CUTS']),   
+                                                     selection = cms.InputTag("egmGsfElectronIDs:heepElectronID-HEEPV70"),
+                                                     id_cut = cms.bool(True) # not sure what this does, didn't use it for any HEEP N-1
+                                                )
 
     #process.tagEleCutBasedHEEP.selection = cms.InputTag("egmGsfElectronIDs:heepElectronID-HEEPV70") #is this line even necessary? check original code
-
-    process.tagEleCutBasedHEEP = cms.EDProducer(PatElectronNm1Selector,
-                                                      input     = cms.InputTag("goodElectrons"),
-                                                      cut       = cms.string(options['ELECTRON_TAG_CUTS']),
-                                                      selection = cms.InputTag("egmGsfElectronIDs:heepElectronID-HEEPV70"),
-                                                      #cutIndicesToMask =  cms.vuint32(0) #should be fine with full HEEP ID for tag
-                                                 )
+                                           )
 
     if options['addSUSY'] :
 

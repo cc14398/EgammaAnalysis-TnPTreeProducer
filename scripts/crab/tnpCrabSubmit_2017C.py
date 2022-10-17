@@ -6,10 +6,10 @@ submitVersion = "10Sep2021_All2017C" # add some date here
 
 doEleTree = 'doEleID=True'
 doPhoTree = 'doPhoID=False'
-doHLTTree = 'doTrigger=False'
+doHLTTree = 'doTrigger=True'
 doRECO    = 'doRECO=False'
 
-mainOutputDir = '/store/user/ccooke/10SepUL2017C/%s' % submitVersion 
+mainOutputDir = '/store/user/ccooke/HLTEnergyCorrUL2017C/%s' % submitVersion 
 
 config.General.transferLogs = False
 
@@ -24,7 +24,7 @@ config.Data.inputDBS = 'global'
 config.Data.publication = False
 
 #config.Data.publishDataName = 
-config.Site.storageSite = 'T2_UK_SGrid_Bristol'
+config.Site.storageSite = 'T3_CH_CERNBOX'
 
 #add another copy of this up here to see if that makes CRAB happy
 #config.Data.inputDataset = '/DoubleEG/Run2017F-09Aug2019_UL2017-v1/MINIAOD'

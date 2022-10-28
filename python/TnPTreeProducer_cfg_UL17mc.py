@@ -32,7 +32,7 @@ varOptions.register(
     )
 
 varOptions.register(
-    "doTrigger", True,
+    "doTrigger", False,
     VarParsing.multiplicity.singleton,
     VarParsing.varType.bool,
     "Include tree for Trigger SF"
@@ -112,7 +112,7 @@ if options['useAOD']:
     options['PHOTON_COLL'  ]    = "gedPhotons"
 
 
-options['ELECTRON_CUTS']        = "(abs(superCluster.eta)<2.5) && !(1.4442< abs(superCluster.eta) <1.566) && (energy*sin(theta))>35"
+options['ELECTRON_CUTS']        = "(abs(superCluster.eta)<2.5) && !(1.4442< abs(superCluster.eta) <1.566) && (et*userFloat('ecalEnergyPostCorr')/energy)>35"
 options['SUPERCLUSTER_CUTS']    = ""
 options['PHOTON_CUTS']          = ""
 options['ELECTRON_TAG_CUTS']    = "(abs(superCluster.eta)<1.4442)"
@@ -166,8 +166,12 @@ else:
 #options['HLTFILTERTOMEASURE']  = cms.vstring("hltEle32WPTightGsfTrackIsoFilter")
 
 ## UL 2017
-options['TnPPATHS']            = cms.vstring("HLT_Ele32_WPTight_Gsf_L1DoubleEG_v*")
-options['TnPHLTTagFilters']    = cms.vstring("hltEle32L1DoubleEGWPTightGsfTrackIsoFilter","hltEGL1SingleEGOrFilter")
+#options['TnPPATHS']            = cms.vstring("HLT_Ele32_WPTight_Gsf_L1DoubleEG_v*")
+#options['TnPHLTTagFilters']    = cms.vstring("hltEle32L1DoubleEGWPTightGsfTrackIsoFilter","hltEGL1SingleEGOrFilter")
+
+#MC test
+options['TnPPATHS']            = cms.vstring()
+options['TnPHLTTagFilters']    = cms.vstring()
 
 ## UL 2018
 #options['TnPPATHS']            = cms.vstring("HLT_Ele32_WPTight_Gsf_v*")
@@ -230,7 +234,7 @@ process.MessageLogger.cerr.threshold = ''
 process.MessageLogger.cerr.FwkReport.reportEvery = 1000
 
 process.source = cms.Source("PoolSource",
-                            fileNames = cms.untracked.vstring(varOptions.inputFiles)# options['INPUT_FILE_NAME'],
+                            fileNames = options['INPUT_FILE_NAME'], #cms.untracked.vstring(varOptions.inputFiles)
                             )
 process.maxEvents = cms.untracked.PSet( input = options['MAXEVENTS'])
 #process.maxEvents = cms.untracked.PSet(
@@ -339,7 +343,6 @@ process.tnpEleIDs = cms.EDAnalyzer("TagProbeFitTreeProducer",
                                         passingHEEPV70DxyNm1Cut = cms.InputTag("probeEleHEEPV70DxyNm1Cut"),
                                         passingHEEPV70MissHitsNm1Cut = cms.InputTag("probeEleHEEPV70MissHitsNm1Cut"),
                                         passingHEEPV70ECALDrivenNm1Cut = cms.InputTag("probeEleHEEPV70ECALDrivenNm1Cut"),
-
 
                                         passingVeto94XV2MinPtCut    = cms.InputTag("probeEleCutBasedVeto94XV2MinPtCut"  ),
                                         passingLoose94XV2MinPtCut   = cms.InputTag("probeEleCutBasedLoose94XV2MinPtCut" ),

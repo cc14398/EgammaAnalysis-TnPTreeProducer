@@ -32,7 +32,7 @@ varOptions.register(
     )
 
 varOptions.register(
-    "doTrigger", True,
+    "doTrigger", False,
     VarParsing.multiplicity.singleton,
     VarParsing.varType.bool,
     "Include tree for Trigger SF"
@@ -112,7 +112,7 @@ if options['useAOD']:
     options['PHOTON_COLL'  ]    = "gedPhotons"
 
 
-options['ELECTRON_CUTS']        = "(abs(superCluster.eta)<2.5) && !(1.4442< abs(superCluster.eta) <1.566) && (energy*sin(theta))>35"
+options['ELECTRON_CUTS']        = "(abs(superCluster.eta)<2.5) && !(1.4442< abs(superCluster.eta) <1.566) && (et*userFloat('ecalEnergyPostCorr')/energy)>35"
 options['SUPERCLUSTER_CUTS']    = ""
 options['PHOTON_CUTS']          = ""
 options['ELECTRON_TAG_CUTS']    = "(abs(superCluster.eta)<1.4442)"
@@ -230,7 +230,7 @@ process.MessageLogger.cerr.threshold = ''
 process.MessageLogger.cerr.FwkReport.reportEvery = 1000
 
 process.source = cms.Source("PoolSource",
-                            fileNames = cms.untracked.vstring(varOptions.inputFiles)#options['INPUT_FILE_NAME'],
+                            fileNames = cms.untracked.vstring(varOptions.inputFiles)# options['INPUT_FILE_NAME'],
                             )
 process.maxEvents = cms.untracked.PSet( input = options['MAXEVENTS'])
 #process.maxEvents = cms.untracked.PSet(

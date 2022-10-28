@@ -45,7 +45,7 @@ def setTagsProbes(process, options):
     process.probeElePassHLT              = process.tagEle.clone()
     process.probeElePassHLT.inputs       = cms.InputTag("probeEle")  
     process.probeElePassHLT.filterNames  = cms.vstring(options['HLTFILTERTOMEASURE'])
-    process.probeElePassHLT.isAND        = cms.bool(False) # Are all the "isAND"s correct? Feel like there was a problem with one in the past
+    process.probeElePassHLT.isAND        = cms.bool(True) # Are all the "isAND"s correct? Feel like there was a problem with one in the past
 
     ###################### PROBE PHOTONs ############################
     process.probePho  = cms.EDProducer( gamHLTProducer,

@@ -174,7 +174,7 @@ options['TnPHLTTagFilters']    = cms.vstring("hltEle32L1DoubleEGWPTightGsfTrackI
 #options['TnPHLTTagFilters']    = cms.vstring("hltEle32WPTightGsfTrackIsoFilter")
 
 options['TnPHLTProbeFilters']  = cms.vstring()
-options['HLTFILTERTOMEASURE']  = cms.vstring("hltEle32WPTightGsfTrackIsoFilter")
+options['HLTFILTERTOMEASURE']  = cms.vstring("hltEle32L1DoubleEGWPTightGsfTrackIsoFilter","hltEGL1SingleEGOrFilter")
 
 ###options['GLOBALTAG']           = 'auto:run2_data'
 
